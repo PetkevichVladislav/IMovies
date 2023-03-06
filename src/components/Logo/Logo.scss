@@ -1,0 +1,17 @@
+.logo{
+    display: inline;
+
+    &__text{
+        display: inline;
+        font-size: 20px;
+        color: #F65261;
+
+        &--bold{
+            font-weight: 800;
+        }
+
+        &--thin{
+            font-weight: 500;
+        }
+    }
+}
