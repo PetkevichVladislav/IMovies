@@ -1,0 +1,30 @@
+.movie-card{
+    max-width: 322px;
+
+    &__description-container{
+        display: flex;
+        justify-content: space-between;
+        margin: 22px 0px 0px 0px;
+        align-items: center;
+    }
+
+    &__description{
+        margin: 0px;
+        color: #FFFFFF;
+
+        &--title{
+            font-size: 18px;
+        }
+
+        &--production-year{
+            border: #97979786 1px solid;
+            border-radius: 4px;
+            padding: 5px 8px;
+        }
+
+        &--genre{
+            margin: 8px 0px 0px 0px;
+            opacity: 50%;
+        }
+    }
+}
