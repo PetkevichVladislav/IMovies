@@ -1,8 +1,7 @@
 import "./MovieCard.scss"
 import Image from "./Bitmap.png";
 
-function MovieCard()
-{
+const MovieCard = () => {
     return (
         <div className="movie-card">
             <img className="movie-card__image" src={Image} alt="movie_card"/>

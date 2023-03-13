@@ -1,13 +1,17 @@
 import "./MovieGrid.scss"
 
+import { useState } from "react";
+
 import Counter from "../Counter/Counter"
 import MovieCard from "../MovieCard/MovieCard";
 
-function MovieGrid()
-{
+
+const MovieGrid = () => {
+    const [counterInitialValue, setCounterInitialValue] = useState<number>(0);
+
     return (
         <section className="movie-grid">
-            <Counter count={39} />
+            <Counter initialValue={counterInitialValue}/>
             <div className="movie-cards-container">
                 <MovieCard/>
                 <MovieCard/>

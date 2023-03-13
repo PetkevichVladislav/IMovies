@@ -1,9 +1,8 @@
-import Logo from "../Logo/Logo";
-
 import "./Footer.scss"
 
-function Footer()
-{
+import Logo from "../Logo/Logo";
+
+const Footer = () => {
     return (
         <footer className="footer">
             <Logo/>
