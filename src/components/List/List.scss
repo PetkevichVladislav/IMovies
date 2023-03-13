@@ -1,0 +1,29 @@
+.list {
+    position: static;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+        list-style-type: none;
+        margin: 20px 15px 20px 15px;
+        color: #FFFFFF;
+        position: relative;
+
+        &--selected,
+        &:hover {
+            color: #F65261;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -23px;
+                width: 100%;
+                height: 3px;
+                left: 0px;
+                background-color: #F65261;
+            }
+        }
+    }
+}

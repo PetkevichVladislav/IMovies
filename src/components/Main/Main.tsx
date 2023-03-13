@@ -1,10 +1,9 @@
+import "./Main.css"
+
 import Menu from "../Menu/Menu";
 import MovieGrid from "../MovieGrid/MovieGrid";
 
-import "./Main.css"
-
-function Main()
-{
+const Main = () => {
     return (
         <main className="main">
             <Menu/>

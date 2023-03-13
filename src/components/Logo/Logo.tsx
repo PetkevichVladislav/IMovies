@@ -1,7 +1,6 @@
 import "./Logo.scss";
 
-function Logo()
-{
+const Logo = () => {
     return (
         <div className="logo">
             <p className="logo__text logo__text--bold">i</p>

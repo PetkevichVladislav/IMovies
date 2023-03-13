@@ -1,10 +1,17 @@
+import "./Header.scss"
+
+import { useCallback, useState } from 'react';
+
 import Logo from "../Logo/Logo";
 import Search from "../Search/Search";
 
-import "./Header.scss"
+function Header() {
+    const [searchQuery, setSearchQuery] = useState<string>('Comedy');
 
-function Header()
-{
+    const searchByQuery = useCallback((query: string) => {
+        console.log(query);
+    }, [])
+
     return (
         <header className="banner">
             <div className="add-movie">
@@ -15,9 +22,9 @@ function Header()
                 <h1 className="search-container__heading">
                     FIND YOUR MOVIE
                 </h1>
-                <Search/>
+                <Search initialQUery={searchQuery} onSearch={searchByQuery}/>
             </div>
-            <hr className="banner_line"/>
+            <hr className="banner__line"/>
         </header>
     )
 }
