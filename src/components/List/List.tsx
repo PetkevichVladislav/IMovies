@@ -11,7 +11,7 @@ interface IGenreListProps {
     onSelect: (itemName: string) => void,
 }
 
-const GenreList: FC<IGenreListProps> = ({itemNames, preselectedItemName, onSelect}) => {
+const List: FC<IGenreListProps> = ({itemNames, preselectedItemName, onSelect}) => {
     const [selectedItemName, setSelectedItemName] = useState(preselectedItemName);
     const listItems = itemNames.map((itemName) => {
         var className = itemName === selectedItemName ? selectedItemClassName : unselectedItemClassName;
@@ -30,4 +30,4 @@ const GenreList: FC<IGenreListProps> = ({itemNames, preselectedItemName, onSelec
     );
 }
 
-export default GenreList;
+export default List;
