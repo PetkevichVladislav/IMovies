@@ -1,5 +1,6 @@
 import React from "react";
 import "./Counter.css"
+import { ICounterProps, ICounterState } from "./CounterInterfaces";
 
 // This code is for future refactoring on functional components.
 
@@ -26,14 +27,6 @@ import "./Counter.css"
 // }
 
 // Code to follow task restrictions.
-interface ICounterProps {
-    initialValue: number;
-  }
-  
-  interface ICounterState {
-    count: number;
-  }
-  
   class Counter extends React.Component<ICounterProps, ICounterState> {
     constructor(props: ICounterProps) {
       super(props);

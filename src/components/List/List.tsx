@@ -11,14 +11,14 @@ interface IGenreListProps {
     onSelect: (itemName: string) => void,
 }
 
-const List: FC<IGenreListProps> = ({itemNames, preselectedItemName, onSelect}) => {
-    const [selectedItemName, setSelectedItemName] = useState(preselectedItemName);
+const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSelect }) => {
+    const [selectedItemName, setSelectedItemName] = useState<string>(preselectedItemName);
     const listItems = itemNames.map((itemName) => {
-        var className = itemName === selectedItemName ? selectedItemClassName : unselectedItemClassName;
-        return <li key={itemName} className={className} onClick={() => SelectItem(itemName)}>{itemName}</li>;
+        const className = itemName === selectedItemName ? selectedItemClassName : unselectedItemClassName;
+        return <li key={itemName} className={className} onClick={() => selectItem(itemName)}>{itemName}</li>;
     });
 
-    const SelectItem = (itemName: string) => {
+    const selectItem = (itemName: string) => {
         setSelectedItemName(itemName);
         onSelect(itemName);
     }
