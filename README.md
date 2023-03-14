@@ -5,5 +5,8 @@ To run the project make the next step:
 To test the project make the next step:
 To run unit test execute command in command line "npm run test".
 To run e2e test execute command in command line "npm run e2e-test".
-To open cypress to browse test execute command in command line "npm run cypress".
+To open cypress to browse test:
+    1. Open two command line
+    2. Execute command in command line "npm start" to run project.
+    3. Execute command in first command line "npm run cypress" to run cypress.
 
