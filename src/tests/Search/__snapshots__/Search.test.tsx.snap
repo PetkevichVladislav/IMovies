@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search When data is valid component renders correctly 1`] = `
+<div
+  className="search"
+>
+  <input
+    className="search__input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="What do you want to watch?"
+    value="Action"
+  />
+  <button
+    className="search__button"
+    onClick={[Function]}
+  >
+    SEARCH
+  </button>
+</div>
+`;
