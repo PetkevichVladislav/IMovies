@@ -11,7 +11,7 @@ interface IGenreListProps {
     onSelect: (itemName: string) => void,
 }
 
-const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSelect }) => {
+export const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSelect }) => {
     const [selectedItemName, setSelectedItemName] = useState<string>(preselectedItemName);
     const listItems = itemNames.map((itemName) => {
         const className = itemName === selectedItemName ? selectedItemClassName : unselectedItemClassName;
