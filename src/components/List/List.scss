@@ -27,3 +27,48 @@
         }
     }
 }
+
+.list.pink {
+    .list__item {
+
+        &:hover {
+            color: #F65261;
+
+            &::after {
+                background-color: #F65261;
+            }
+        }
+    }
+
+
+    &--selected,
+    &:hover {
+        color: #F65261;
+
+        &::after {
+            background-color: #F65261;
+        }
+    }
+}
+
+.list.blue {
+    .list__item {
+
+        &:hover {
+            color: #52e3f6;
+
+            &::after {
+                background-color: #52e3f6;
+            }
+        }
+
+        &--selected,
+        &:hover {
+            color: #52e3f6;
+
+            &::after {
+                background-color: #52e3f6;
+            }
+        }
+    }
+}

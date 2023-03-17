@@ -1,54 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List When data is valid component renders correctly 1`] = `
-<ul
-  className="list"
->
-  <li
-    className="list__item"
-    onClick={[Function]}
-  >
-    Action
-  </li>
-  <li
-    className="list__item"
-    onClick={[Function]}
-  >
-    Adventure
-  </li>
-  <li
-    className="list__item"
-    onClick={[Function]}
-  >
-    Comedy
-  </li>
-  <li
-    className="list__item"
-    onClick={[Function]}
-  >
-    Drama
-  </li>
-  <li
-    className="list__item list__item--selected"
-    onClick={[Function]}
-  >
-    Sci-Fi
-  </li>
-  <li
-    className="list__item"
-    onClick={[Function]}
-  >
-    Thriller
-  </li>
-  <li
-    className="list__item"
-    onClick={[Function]}
-  >
-    Western
-  </li>
-</ul>
-`;
-
 exports[`List When data is valid component should renders correctly 1`] = `
 <ul
   className="list"
