@@ -4,6 +4,8 @@ To run the project make the next step:
 
 To test the project make the next step:
 
+To run storybook execute command in command line "npm run storybook".
+
 To run unit test execute command in command line "npm run test".
 
 To run e2e test execute command in command line "npm run e2e-test".
