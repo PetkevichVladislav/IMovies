@@ -68,7 +68,7 @@
     color: #FFFFFF;
     display: flex;
     align-items: center;
-
+    
     &__text{
         margin: 0px;
 
@@ -77,12 +77,4 @@
             margin: 0px 13px 0px 30px;
         }
     }
-}
-
-.icon-arrow-down::before{
-    color: #F65261;
-    display: block;
-    font-size: 7px;
-    margin-left: 13px;
-    margin-right: 4px;
 }
