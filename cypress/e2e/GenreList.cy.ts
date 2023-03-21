@@ -6,7 +6,7 @@ describe('GenreList', () => {
   });
 
   it("When clicks on not selected item it should changes to selected", () => {
-    const listElementName = 'Adventure';
+    const listElementName = 'Action';
     getListElementWithName(listElementName).click();
     getListElementWithName(listElementName).should("have.class", "list__item--selected");
   });

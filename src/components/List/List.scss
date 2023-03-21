@@ -4,12 +4,15 @@
     padding: 0px;
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
+    text-transform: uppercase;
 
     &__item {
         list-style-type: none;
         margin: 20px 15px 20px 15px;
         color: #FFFFFF;
         position: relative;
+        cursor: pointer;
 
         &--selected,
         &:hover {

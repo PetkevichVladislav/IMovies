@@ -24,7 +24,6 @@ function Header() {
                 </h1>
                 <Search initialQuery={searchQuery} onSearch={searchByQuery}/>
             </div>
-            <hr className="banner__line"/>
         </header>
     )
 }

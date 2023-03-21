@@ -1,6 +1,7 @@
 .movie-card{
     max-width: 322px;
     margin-top: 25px;
+    position: relative;
 
     &__description-container{
         display: flex;
@@ -28,4 +29,31 @@
             opacity: 50%;
         }
     }
+
+    &__context-menu{
+        position: absolute;
+        display: inline-block;
+        margin-left: auto;
+        background-color: #2A202D;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        top:15px;
+        right: 15px;
+    }
+
+    &__popupmenu_container {
+        position: absolute;
+        top:15px;
+        right: 15px;
+    }
+}
+
+.icon-more-vertical::before{
+    content: "\e905";
+    color: white;
+    display: block;
+    font-size: 32px;
+    padding-top: 1px;
+    padding-left: 2px;
 }

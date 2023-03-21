@@ -1,0 +1,41 @@
+.drop-down-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #232323;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  width: 190px;
+  border-radius: 4px;
+  user-select: none;
+
+  &__cross {
+    margin: 8px 8px 0px auto;
+    cursor: pointer;
+  }
+
+  &__item-container {
+    margin: 8px 0px;
+    padding: 0px;
+  }
+
+  &__item {
+    height: 35px;
+    list-style-type: none;
+    line-height: 35px;
+    padding-left: 25px;
+
+    &:hover{
+      background-color: #F65261;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}
+
+.icon-close::after {
+  content: "\e901";
+  color: white;
+  display: block;
+  font-size: 12px;
+}
