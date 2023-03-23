@@ -1,7 +1,6 @@
 import "./App.scss";
 import "./style.css";
 
-import Header from './components/Header/Header';
 import MainPart from './components/Main/Main';
 import Footer from './components/Footer/Footer';
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
@@ -22,7 +21,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* <Header/> */}
       <MovieDetails {...movieDetails}/>
       <hr className="app__divider"/>
       <MainPart />

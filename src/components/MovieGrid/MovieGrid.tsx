@@ -16,17 +16,13 @@ const MovieGrid = () => {
         genres: ['Action', 'Drama'],
     });
 
+    const cards = Array(10).fill(<MovieCard {...movieData} onClick={() => console.log("card clicked")}/>);
+
     return (
         <section className="movie-grid">
             <Counter initialValue={counterInitialValue} />
             <div className="movie-cards-container">
-                <MovieCard {...movieData} onClick={() => console.log("card clicked")}/>
-                <MovieCard {...movieData} onClick={() => console.log("card clicked")}/>
-                <MovieCard {...movieData} onClick={() => console.log("card clicked")}/>
-                <MovieCard {...movieData} onClick={() => console.log("card clicked")}/>
-                <MovieCard {...movieData} onClick={() => console.log("card clicked")}/>
-                <MovieCard {...movieData} onClick={() => console.log("card clicked")}/>
-                <MovieCard {...movieData} onClick={() => console.log("card clicked")}/>
+                {cards}
             </div>
         </section>
     )

@@ -14,7 +14,7 @@ export default {
     }
 } as ComponentMeta<typeof Menu>
 
-const Template : ComponentStory<typeof Menu> = ( ) =>  <Menu/>;
+const Template : ComponentStory<typeof Menu> = () =>  <Menu/>;
 
 export const Default = Template.bind({});
 Default.args = {

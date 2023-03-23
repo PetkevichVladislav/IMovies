@@ -13,8 +13,8 @@ export interface IMovieCard {
 }
 
 export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
-    const [isMouseHoveredOnCard, setIsMouseHoveredOnCard] = useState(false);
-    const [isPopupMenuOpened, setIsPopupMenuOpened] = useState(false);
+    const [isMouseHoveredOnCard, setIsMouseHoveredOnCard] = useState<boolean>(false);
+    const [isPopupMenuOpened, setIsPopupMenuOpened] = useState<boolean>(false);
     const [menuItems, setMenuItems] = useState([
         {
             onClick: () => console.log('Edit'),
@@ -28,7 +28,6 @@ export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
 
     const handleClosePopupMenu = () => {
         setIsPopupMenuOpened(false);
-        console.log("close form");
     };
 
     const handleMouseEnter = () => {
@@ -46,7 +45,6 @@ export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
 
     const handleMenuClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         event.stopPropagation();
-        console.log("open form");
         setIsPopupMenuOpened(true);
     }
 
