@@ -9,18 +9,18 @@ describe("Search", () => {
     const onSearchCallback = jest.fn();
 
     it("When data is valid component renders correctly", () => {
-        const tree = renderer.create(<Search initialQUery={initialQuery} onSearch={onSearchCallback} />).toJSON();
+        const tree = renderer.create(<Search initialQuery={initialQuery} onSearch={onSearchCallback} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     it("When search creates, initial query should setups correctly", () => {
-        render(<Search initialQUery={initialQuery} onSearch={onSearchCallback} />);
+        render(<Search initialQuery={initialQuery} onSearch={onSearchCallback} />);
         const input = screen.getByRole<HTMLInputElement>("textbox");
         expect(input.value).toBe(initialQuery);
     });
 
     it("When value in input changes query should be changed", () => {
-        render(<Search initialQUery={initialQuery} onSearch={onSearchCallback} />);
+        render(<Search initialQuery={initialQuery} onSearch={onSearchCallback} />);
         const input = screen.getByRole<HTMLInputElement>("textbox");
         const changedValue = "Sci-Fi";
         fireEvent.change(input, { target: { value: changedValue } });
@@ -28,7 +28,7 @@ describe("Search", () => {
     });
 
     it("When value in input changes and button clicks callback should return query", () => {
-        render(<Search initialQUery={initialQuery} onSearch={onSearchCallback} />);
+        render(<Search initialQuery={initialQuery} onSearch={onSearchCallback} />);
         const input = screen.getByRole<HTMLInputElement>("textbox");
         const changedValue = "Sci-Fi";
         fireEvent.change(input, { target: { value: changedValue } });
@@ -38,7 +38,7 @@ describe("Search", () => {
     });
 
     it("When input is focussed and enter pressed callback should return query", () => {
-        render(<Search initialQUery={initialQuery} onSearch={onSearchCallback} />);
+        render(<Search initialQuery={initialQuery} onSearch={onSearchCallback} />);
         const input = screen.getByRole<HTMLInputElement>("textbox");
         fireEvent.focus(input);
         fireEvent.keyDown(input, { key: 'Enter' });
@@ -46,7 +46,7 @@ describe("Search", () => {
     });
 
     it("When input is not focussed and enter pressed callback should return query", () => {
-        render(<Search initialQUery={initialQuery} onSearch={onSearchCallback} />);
+        render(<Search initialQuery={initialQuery} onSearch={onSearchCallback} />);
         const input = screen.getByRole<HTMLInputElement>("textbox");
         fireEvent.keyDown(input, { key: 'Enter' });
         expect(onSearchCallback).not.toBeCalled();

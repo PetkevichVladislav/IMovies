@@ -1,4 +1,4 @@
-import "./Counter.css"
+import "./Counter.scss"
 
 import { ICounterProps } from "./CounterInterfaces";
 import { FC, useCallback, useState } from "react";

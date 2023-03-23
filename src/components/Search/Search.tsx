@@ -3,12 +3,12 @@ import './Search.scss';
 import { useState, useCallback, useEffect, FC } from 'react';
 
 interface ISearchProps {
-    initialQUery: string,
+    initialQuery: string,
     onSearch: (query: string) => void,
 }
 
-const Search: FC<ISearchProps> = ({ initialQUery, onSearch }) => {
-    const [query, setQuery] = useState<string>(initialQUery);
+const Search: FC<ISearchProps> = ({ initialQuery, onSearch }) => {
+    const [query, setQuery] = useState<string>(initialQuery);
     const [isFocus, setIsFocus] = useState<boolean>(false);
 
     const internalSearch = useCallback(() => { onSearch(query) }, [onSearch, query])

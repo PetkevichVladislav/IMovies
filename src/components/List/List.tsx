@@ -9,9 +9,10 @@ interface IGenreListProps {
     itemNames: string[],
     preselectedItemName: string,
     onSelect: (itemName: string) => void,
+    selectedItemColor?: string,
 }
 
-export const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSelect }) => {
+export const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSelect, selectedItemColor}) => {
     const [selectedItemName, setSelectedItemName] = useState<string>(preselectedItemName);
     const listItems = itemNames.map((itemName) => {
         const className = itemName === selectedItemName ? selectedItemClassName : unselectedItemClassName;
@@ -23,8 +24,12 @@ export const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSe
         onSelect(itemName);
     }
 
+    const listClassNames : string[] = ["list"];
+    if(selectedItemColor != null) {
+        listClassNames.push(selectedItemColor);
+    }
     return (
-        <ul className="list">
+        <ul className={listClassNames.join(" ")}>
             {listItems}
         </ul>
     );

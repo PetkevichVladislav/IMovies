@@ -4,12 +4,15 @@
     padding: 0px;
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
+    text-transform: uppercase;
 
     &__item {
         list-style-type: none;
         margin: 20px 15px 20px 15px;
         color: #FFFFFF;
         position: relative;
+        cursor: pointer;
 
         &--selected,
         &:hover {
@@ -23,6 +26,51 @@
                 height: 3px;
                 left: 0px;
                 background-color: #F65261;
+            }
+        }
+    }
+}
+
+.list.pink {
+    .list__item {
+
+        &:hover {
+            color: #F65261;
+
+            &::after {
+                background-color: #F65261;
+            }
+        }
+    }
+
+
+    &--selected,
+    &:hover {
+        color: #F65261;
+
+        &::after {
+            background-color: #F65261;
+        }
+    }
+}
+
+.list.blue {
+    .list__item {
+
+        &:hover {
+            color: #52e3f6;
+
+            &::after {
+                background-color: #52e3f6;
+            }
+        }
+
+        &--selected,
+        &:hover {
+            color: #52e3f6;
+
+            &::after {
+                background-color: #52e3f6;
             }
         }
     }

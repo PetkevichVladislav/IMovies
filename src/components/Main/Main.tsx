@@ -3,7 +3,7 @@ import "./Main.css"
 import Menu from "../Menu/Menu";
 import MovieGrid from "../MovieGrid/MovieGrid";
 
-const Main = () => {
+const MainPart = () => {
     return (
         <main className="main">
             <Menu/>
@@ -12,4 +12,4 @@ const Main = () => {
     );
 }
 
-export default Main;
+export default MainPart;

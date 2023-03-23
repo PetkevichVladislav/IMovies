@@ -22,9 +22,8 @@ function Header() {
                 <h1 className="search-container__heading">
                     FIND YOUR MOVIE
                 </h1>
-                <Search initialQUery={searchQuery} onSearch={searchByQuery}/>
+                <Search initialQuery={searchQuery} onSearch={searchByQuery}/>
             </div>
-            <hr className="banner__line"/>
         </header>
     )
 }
