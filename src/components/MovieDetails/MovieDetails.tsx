@@ -3,6 +3,9 @@ import { FC } from "react"
 
 import Logo from "../Logo/Logo";
 
+const bottomBorderScore = 0;
+const topBottomBorderScore = 10;
+
 export interface IMovieDetails {
     imageUrl: string;
     movieName: string;
@@ -14,8 +17,8 @@ export interface IMovieDetails {
 }
 
 export const MovieDetails: FC<IMovieDetails> = (details: IMovieDetails) => {
-    let score = details.rating > 10 ? 10 : details.rating;
-    score = score < 0 ? 0 : score
+    let score = details.rating > topBottomBorderScore ? 10 : details.rating;
+    score = score < bottomBorderScore ? bottomBorderScore : score
 
     return (
         <div className="movie-details">

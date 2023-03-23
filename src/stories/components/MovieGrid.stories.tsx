@@ -13,7 +13,7 @@ export default {
     }
 } as ComponentMeta<typeof MovieGrid>
 
-const Template : ComponentStory<typeof MovieGrid> = ( ) =>  <MovieGrid/>;
+const Template : ComponentStory<typeof MovieGrid> = ( ) =>  <MovieGrid />;
 
 export const Default = Template.bind({});
 Default.args = {
