@@ -6,12 +6,18 @@ import { IMovieCard, MovieCard } from '../../components/MovieCard/MovieCard';
 
 describe("Movie card", () => {
     const onClickCallback = jest.fn();
+    const onRemoveMenuCallback = jest.fn();
+    const onEditMenuCallback = jest.fn();
     const movieData : IMovieCard = {
         imageUrl: "http://uimage.com",
         movieName: 'Example Movie',
         releaseYear: '2022',
         genres: ['Action', 'Drama'],
         onClick: onClickCallback,
+        movieMenu:{
+            onDeleteClick:onRemoveMenuCallback,
+            onEditCLick:onEditMenuCallback,
+        }
     };
 
     it("When data is valid component should renders correctly", () =>{

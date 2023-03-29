@@ -7,6 +7,9 @@ import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 import { useState } from "react";
 
 import Image from "./components/MovieCard/Bitmap.png";
+import { Button } from "./components/Button/Button";
+import { ConfirmationModal } from "./components/Modals/ConfirmationModal/ConfirmationModal";
+import { ModelBase } from "./components/Modals/ModalBase/ModalBase";
 
 function App() {
   const [movieDetails, setMovieDetails] = useState({
@@ -25,6 +28,17 @@ function App() {
       <hr className="app__divider"/>
       <MainPart />
       <Footer />
+      <ModelBase onClose={() => {console.log("close")}}>
+        <Button isPrimary={true} text="primary" onClick={() => {console.log("primary")}}></Button>
+        <Button isPrimary={false} text="secondary" onClick={() => {console.log("secondary")}}></Button>
+      </ModelBase>
+      <ConfirmationModal title="Remove movie" onClose={() => {console.log("close")}} onConfirm={() => {console.log("close")}}>
+        g4gtewfwgw5gw5gaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddc
+        accccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccd
+        acccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccd
+        sfvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+        sfvsfvsfvsfvsfvssvsfsvsvsvsvvsvsfsfvs
+      </ConfirmationModal>
     </div>
   );
 }

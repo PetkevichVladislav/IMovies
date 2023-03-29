@@ -1,0 +1,18 @@
+.titled-container{
+    position: relative;
+    
+    &__title{
+        display: inline-block;
+        margin-bottom: 13px;
+        text-transform: uppercase;
+        color: #F65261;
+        opacity: 80%;
+    }
+
+    &__error{
+        display: inline-block;
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+}
