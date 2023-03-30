@@ -8,7 +8,7 @@ exports[`Movie details When data is valid component should renders correctly 1`]
     className="movie-details__icons-container"
   >
     <div
-      className="movie-details__logo-containter"
+      className="movie-details__logo-container"
     >
       <div
         className="logo"
@@ -32,7 +32,7 @@ exports[`Movie details When data is valid component should renders correctly 1`]
   <div
     className="movie-details__info-container"
   >
-    <div
+    <figure
       className="movie-details__image-container"
     >
       <img
@@ -40,7 +40,7 @@ exports[`Movie details When data is valid component should renders correctly 1`]
         className="movie-details__image"
         src="http://uimage.com"
       />
-    </div>
+    </figure>
     <div
       className="movie-details__details-container"
     >

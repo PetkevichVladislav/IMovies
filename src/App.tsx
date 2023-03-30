@@ -1,15 +1,12 @@
 import "./App.scss";
 import "./style.css";
 
-import MainPart from './components/Main/Main';
-import Footer from './components/Footer/Footer';
-import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 import { useState } from "react";
-
+import MainPart from './components/Main/Main';
+import Header from "./components/Header/Header";
+import Footer from './components/Footer/Footer';
 import Image from "./components/MovieCard/Bitmap.png";
-import { Button } from "./components/Button/Button";
-import { ConfirmationModal } from "./components/Modals/ConfirmationModal/ConfirmationModal";
-import { ModelBase } from "./components/Modals/ModalBase/ModalBase";
+import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 
 function App() {
   const [movieDetails, setMovieDetails] = useState({
@@ -24,21 +21,10 @@ function App() {
 
   return (
     <div className="app">
-      <MovieDetails {...movieDetails}/>
+      <Header/>
       <hr className="app__divider"/>
       <MainPart />
       <Footer />
-      <ModelBase onClose={() => {console.log("close")}}>
-        <Button isPrimary={true} text="primary" onClick={() => {console.log("primary")}}></Button>
-        <Button isPrimary={false} text="secondary" onClick={() => {console.log("secondary")}}></Button>
-      </ModelBase>
-      <ConfirmationModal title="Remove movie" onClose={() => {console.log("close")}} onConfirm={() => {console.log("close")}}>
-        g4gtewfwgw5gw5gaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddc
-        accccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccd
-        acccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccd
-        sfvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-        sfvsfvsfvsfvsfvssvsfsvsvsvsvvsvsfsfvs
-      </ConfirmationModal>
     </div>
   );
 }

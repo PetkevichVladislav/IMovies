@@ -7,7 +7,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: "Component renders text input."
+                component: "Component check box input."
             }
         }
     }

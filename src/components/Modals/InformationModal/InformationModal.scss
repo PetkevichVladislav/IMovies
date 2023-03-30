@@ -1,0 +1,10 @@
+.information-modal{
+    &__text{
+        align-self: center;
+        font-size: 24px;
+        color:#FFFFFF;
+        word-wrap: break-word;
+        max-width: 700px;
+        max-height: 600px;
+    }
+}

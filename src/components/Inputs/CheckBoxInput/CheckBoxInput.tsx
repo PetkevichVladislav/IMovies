@@ -20,8 +20,8 @@ export const CheckBoxInput: FC<ICheckBoxInput> = ({defaultChecked = false, label
 
     return (
         <>
-            <label className="checkbox-input__container" defaultChecked={isChecked} onChange={onChanged}>{label}
-                <input className="checkbox-input__input" name={name} type="checkbox" checked={isChecked}/>
+            <label className="checkbox-input__container" defaultChecked={isChecked} onChange={onChanged} data-testid="checkbox-container">{label}
+                <input className="checkbox-input__input" name={name} type="checkbox" checked={isChecked} data-testid="checkbox-input"/>
                 <span className="checkbox-input__checkmark"></span>
             </label>
         </>

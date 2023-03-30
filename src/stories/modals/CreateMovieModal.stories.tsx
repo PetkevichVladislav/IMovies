@@ -8,7 +8,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: "Component renders text input."
+                component: "Component renders crete or update movie modal window."
             }
         }
     }
@@ -21,4 +21,5 @@ Default.args = {
     onClose: () => console.log("closed"),
     onSubmit: () => console.log("submit"),
     title: "Create movie",
+    isOpened: true,
 };

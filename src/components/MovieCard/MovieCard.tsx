@@ -27,7 +27,7 @@ export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
             menuItem: 'Edit',
         },
         {
-            onClick: movie.movieMenu.onEditCLick,
+            onClick: movie.movieMenu.onDeleteClick,
             menuItem: 'Delete',
         }
     ]);

@@ -19,7 +19,13 @@ export const TextInput : FC<ITextInput> = ({placeholder, initialValue, height, n
     
     return (
         <>
-            <input style={{height:`${height}`}} className="input text-input" name={name} placeholder={placeholder} onChange={handleChange} value={value!}/>
+            <input style={{height:`${height}`}} 
+            className="input text-input" 
+            name={name} 
+            placeholder={placeholder} 
+            onChange={handleChange} 
+            value={value!}
+            data-testid="text-input"/>
         </>
     )
 }

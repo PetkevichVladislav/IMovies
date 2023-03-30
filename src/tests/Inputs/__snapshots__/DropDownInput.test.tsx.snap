@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drop Down Input When data is valid component should renders correctly 1`] = `
+<div
+  className="drop-down-input__select-container"
+  data-testid="drop-down-container"
+  onClick={[Function]}
+>
+  <select
+    className="input drop-down-input__select"
+  >
+    <option>
+      Select value
+    </option>
+  </select>
+  <span
+    className="drop-down-input__appearance icon-arrow-down "
+  />
+  <div
+    className="drop-down-input__content-container"
+  />
+</div>
+`;

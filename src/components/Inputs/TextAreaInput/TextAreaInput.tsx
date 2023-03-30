@@ -5,7 +5,7 @@ import "../Input.scss";
 
 export interface ITextAreaInput{
     placeholder: string;
-    initialValue?: string|null;
+    initialValue?: string;
     height?: string;
     name?: string;
 }
@@ -19,7 +19,13 @@ export const TextAreaInput : FC<ITextAreaInput> = ({placeholder, initialValue, h
     
     return (
         <>
-            <textarea style={{height:`${height}`}} className="input text-area-input" name={name} placeholder={placeholder} onChange={handleChange} value={value!}/>
+            <textarea style={{height:`${height}`}} 
+            className="input text-area-input" 
+            name={name} 
+            placeholder={placeholder} 
+            onChange={handleChange} 
+            value={value}
+            data-testid="text-area-input"/>
         </>
     )
 }

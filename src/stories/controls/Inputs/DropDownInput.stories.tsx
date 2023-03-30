@@ -8,7 +8,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: "Component renders text input."
+                component: "Component renders drop down input."
             }
         }
     }

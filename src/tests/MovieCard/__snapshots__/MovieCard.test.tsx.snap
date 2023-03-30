@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List When data is valid component should renders correctly 1`] = `
+exports[`Movie card When data is valid component should renders correctly 1`] = `
 <div
   className="movie-card"
   data-testid="movie-card"

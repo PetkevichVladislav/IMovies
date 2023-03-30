@@ -28,7 +28,7 @@ describe("Movie card", () => {
 
     it("when user open forms the data should reneders data", () =>{
         render(<MovieCard {...movieData}/>);
-        expect(screen.getByText("http://uimage.com")).toBeInTheDocument();
+        expect(screen.getByRole("img")).toHaveAttribute("src","http://uimage.com");
         expect(screen.getByText('Example Movie')).toBeInTheDocument();
         expect(screen.getByText('2022')).toBeInTheDocument();
         expect(screen.getByText('Action, Drama')).toBeInTheDocument();

@@ -6,14 +6,15 @@ import "./ConfirmationModal.scss";
 export interface IConfirmModal{
     onConfirm: () => void;
     onClose: () => void;
+    isOpened: boolean;
     title?: string;
     children?: string;
 }
 
-export const ConfirmationModal : FC<IConfirmModal> = ({onClose, onConfirm, title, children}) => {
+export const ConfirmationModal : FC<IConfirmModal> = ({onClose, onConfirm, title, isOpened, children}) => {
     return (
         <>
-            <ModelBase title={title} onClose={onClose}>
+            <ModelBase isOpened={isOpened} title={title} onClose={onClose}>
                 <p className="confirmation-modal__text">{children}</p>
                 <div className="confirmation-modal__confirm-button-container">
                     <Button isPrimary={true} text="confirm" onClick={onConfirm}></Button>

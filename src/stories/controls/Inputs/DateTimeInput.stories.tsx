@@ -7,7 +7,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: "Component renders text input."
+                component: "Component renders date time input."
             }
         }
     }

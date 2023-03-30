@@ -1,9 +1,7 @@
-import { FC, ReactNode, useEffect, useMemo, useState } from "react";
-
-import "./DropDownInput.scss";
 import "../Input.scss";
-import React from "react";
-import { transform } from "typescript";
+import "./DropDownInput.scss";
+
+import { FC, ReactNode, useState } from "react";
 
 export interface IDropDownInput {
     placeholder: string;
@@ -16,26 +14,10 @@ export const DropDownInput: FC<IDropDownInput> = ({ placeholder, children}) => {
     const onDropDownClicked = () => {
         setIsDropDownExpanded(!isExpanded);
     };
-
-    // useEffect(() => {
-    //     const handleClickOutside = (event: MouseEvent) => {
-    //         ["drop-down-input__content", 'drop-down-input__content']
-    //         const a = (event.target as Element).className === ;
-    //         console.log((event.target as Element).className);
-    //         if (isExpanded && !a) {
-    //             setIsDropDownExpanded(false);
-    //         }
-    //     };
-
-    //     document.addEventListener('click', (event) => handleClickOutside(event), true);
-    //     return () => {
-    //         document.removeEventListener('click', handleClickOutside, true);
-    //     };
-    // }, [isExpanded, setIsDropDownExpanded]);
     
     return (
         <>
-            <div className="drop-down-input__select-container" onClick={onDropDownClicked}>
+            <div className="drop-down-input__select-container" onClick={onDropDownClicked} data-testid="drop-down-container">
                 <select className="input drop-down-input__select">
                     <option>{placeholder}</option>
                 </select>
@@ -43,7 +25,7 @@ export const DropDownInput: FC<IDropDownInput> = ({ placeholder, children}) => {
                 <div className="drop-down-input__content-container"></div>
             </div>
             {isExpanded &&
-                <div className="drop-down-input__content">
+                <div className="drop-down-input__content" data-testid="drop-down-content">
                     {children}
                 </div>
             }

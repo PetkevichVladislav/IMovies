@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Date time Input When data is valid component should renders correctly 1`] = `
+<label
+  className="checkbox-input__container"
+  data-testid="checkbox-container"
+  defaultChecked={false}
+  onChange={[Function]}
+>
+  check if you junior
+  <input
+    checked={false}
+    className="checkbox-input__input"
+    data-testid="checkbox-input"
+    name="checker"
+    type="checkbox"
+  />
+  <span
+    className="checkbox-input__checkmark"
+  />
+</label>
+`;

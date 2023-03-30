@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 
 import "../Input.scss";
+import "./DateTimeInput.scss";
 
 export interface IDateTimeInput {
     initialValue?: string;
@@ -16,7 +17,7 @@ export const DateTimeInput: FC<IDateTimeInput> = ({ initialValue, name }) => {
 
     return (
         <>
-            <input className="input" type="date" name={name} onChange={handleChange} value={date}/>
+            <input className="input date-time-input" type="date" name={name} onChange={handleChange} value={date} data-testid="date-time-input"/>
         </>
     )
 }
