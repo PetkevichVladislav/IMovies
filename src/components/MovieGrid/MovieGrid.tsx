@@ -47,7 +47,8 @@ const MovieGrid = () => {
                     setIsEditMovieModelOpened(false);
                     setIsEditMovieInformationModelOpened(true);
                 }}
-                title="edit movie" />
+                title="edit movie"
+                movie={null}/>
             <InformationModal isOpened={isEditMovieInformationModelOpened}
                 onClose={() => setIsEditMovieInformationModelOpened(false)}
                 title="congratulations !"

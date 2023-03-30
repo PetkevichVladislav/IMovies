@@ -9,12 +9,10 @@ import { TextAreaInput } from "../../Inputs/TextAreaInput/TextAreaInput";
 import { CheckBoxInput, ICheckBoxInput } from "../../Inputs/CheckBoxInput/CheckBoxInput";
 import { DropDownInput } from "../../Inputs/DropDownInput/DropDownInput";
 import { DateTimeInput } from "../../Inputs/DateTimeInput/DateTimeInput";
-import { forceReRender } from "@storybook/react";
 
-export interface MovieModel{
-    genreData: ICheckBoxInput[];
+export interface MovieModel {
     title: string;
-    releaseDate : string;
+    releaseDate: string;
     url: string;
     rating: string;
     runtime: string;
@@ -24,7 +22,8 @@ export interface MovieModel{
 export interface ICreateMovieModal {
     onSubmit: () => void;
     onClose: () => void;
-    movie?: MovieModel;
+    genreData?: ICheckBoxInput[];
+    movie?: MovieModel | null;
     title?: string;
     isOpened: boolean;
 }
@@ -42,7 +41,6 @@ const defaultGenres: ICheckBoxInput[] = [
 ]
 
 const defaultMovie: MovieModel = {
-    genreData: defaultGenres,
     title: "Bohemian Rhapsody",
     rating: "9.4",
     releaseDate: "2022-09-03",
@@ -52,12 +50,12 @@ const defaultMovie: MovieModel = {
 }
 
 
-export const CreateMovieModal: FC<ICreateMovieModal> = ({ onClose, onSubmit, title, isOpened, movie = defaultMovie}) => {
+export const CreateMovieModal: FC<ICreateMovieModal> = ({ onClose, onSubmit, title, isOpened, movie = defaultMovie, genreData = defaultGenres }) => {
     const onFormSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
         const selectedGenres: Map<string, boolean> = new Map();
-        for (const genre of movie.genreData) {
+        for (const genre of genreData) {
             const name = genre.label.toLowerCase();
             const value = formData.get(name);
 
@@ -66,7 +64,7 @@ export const CreateMovieModal: FC<ICreateMovieModal> = ({ onClose, onSubmit, tit
         }
         formData.set("selected genres", JSON.stringify(Object.fromEntries(selectedGenres)));
         onSubmit();
-    }, [movie.genreData, onSubmit])
+    }, [genreData, onSubmit])
 
     return (
         <>
@@ -74,27 +72,27 @@ export const CreateMovieModal: FC<ICreateMovieModal> = ({ onClose, onSubmit, tit
                 <form onSubmit={onFormSubmit}>
                     <div className="create-movie-modal__inputs-grid">
                         <TitledContainer title="title">
-                            <TextInput name="title" placeholder="start to input text" initialValue={movie.title}></TextInput>
+                            <TextInput name="title" placeholder="start to input text" initialValue={movie?.title}></TextInput>
                         </TitledContainer>
                         <TitledContainer title="release date">
-                            <DateTimeInput name="release date" initialValue={movie.releaseDate}></DateTimeInput>
+                            <DateTimeInput name="release date" initialValue={movie?.releaseDate}></DateTimeInput>
                         </TitledContainer>
                         <TitledContainer title="movie url">
-                            <TextInput name="url" placeholder="https://" initialValue={movie.url}></TextInput>
+                            <TextInput name="url" placeholder="https://" initialValue={movie?.url}></TextInput>
                         </TitledContainer>
                         <TitledContainer title="rating">
-                            <TextInput name="rating" placeholder="7.8" initialValue={movie.rating}></TextInput>
+                            <TextInput name="rating" placeholder="7.8" initialValue={movie?.rating}></TextInput>
                         </TitledContainer>
                         <TitledContainer title="genre">
                             <DropDownInput placeholder="Select genre">
-                                {movie.genreData.map(data => <CheckBoxInput name={data.label.toLowerCase()} label={data.label} onChange={data.onChange} />)}
+                                {genreData.map(data => <CheckBoxInput name={data.label.toLowerCase()} label={data.label} onChange={data.onChange} />)}
                             </DropDownInput>
                         </TitledContainer>
                         <TitledContainer title="runtime">
-                            <TextInput name="runtime" placeholder="minutes" initialValue={movie.runtime}></TextInput>
+                            <TextInput name="runtime" placeholder="minutes" initialValue={movie?.runtime}></TextInput>
                         </TitledContainer>
                         <TitledContainer title="overview" error="error">
-                            <TextAreaInput name="description" placeholder="movie description" height="197px" initialValue={movie.overview}></TextAreaInput>
+                            <TextAreaInput name="description" placeholder="movie description" height="197px" initialValue={movie?.overview}></TextAreaInput>
                         </TitledContainer>
                     </div>
                     <div className="create-movie-modal__buttons-container">

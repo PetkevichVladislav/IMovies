@@ -16,10 +16,20 @@ export default {
 
 const Template : ComponentStory<typeof CreateMovieModal> = (params) =>  <CreateMovieModal {...params}/>;
 
-export const Default = Template.bind({});
-Default.args = {
+export const WithData = Template.bind({});
+WithData.args = {
     onClose: () => console.log("closed"),
     onSubmit: () => console.log("submit"),
     title: "Create movie",
     isOpened: true,
+};
+
+
+export const WithoutData = Template.bind({});
+WithoutData.args = {
+    onClose: () => console.log("closed"),
+    onSubmit: () => console.log("submit"),
+    title: "Create movie",
+    isOpened: true,
+    movie: null,
 };
