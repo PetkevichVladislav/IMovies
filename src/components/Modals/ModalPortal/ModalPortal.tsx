@@ -14,7 +14,7 @@ function createWrapperAndAppendToBody(wrapperId: string) {
 }
 
 export const ModalPortal: FC<IModalPortal> = ({ children, wrapperId="portal-modal-container"}) => {
-    const [wrapperElement, setWrapperElement] = useState<HTMLElement|null>(null);
+    const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(null);
 
     useLayoutEffect(() => {
         let element = document.getElementById(wrapperId);

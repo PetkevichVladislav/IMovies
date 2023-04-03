@@ -9,7 +9,7 @@ export interface IDropDownInput {
 }
 
 export const DropDownInput: FC<IDropDownInput> = ({ placeholder, children}) => {
-    const [isExpanded, setIsDropDownExpanded] = useState(false);
+    const [isExpanded, setIsDropDownExpanded] = useState<boolean>(false);
 
     const onDropDownClicked = () => {
         setIsDropDownExpanded(!isExpanded);

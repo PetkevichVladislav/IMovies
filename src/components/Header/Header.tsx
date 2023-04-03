@@ -9,7 +9,7 @@ import { InformationModal } from "../Modals/InformationModal/InformationModal";
 function Header() {
     const [searchQuery, setSearchQuery] = useState<string>('Comedy');
     const [isCreateMovieModelOpened, setIsCreateMovieModelOpened] = useState<boolean>(false);
-    const [isEditMovieInformationModelOpened, setIsCreateMovieInformationModelOpened] = useState<boolean>(false);
+    const [isEditMovieModelOpened, setIsEditMovieModelOpened] = useState<boolean>(false);
 
     const searchByQuery = useCallback((query: string) => {
         console.log(query);
@@ -33,11 +33,12 @@ function Header() {
                 onClose={() => setIsCreateMovieModelOpened(false)}
                 onSubmit={() => {
                     setIsCreateMovieModelOpened(false);
-                    setIsCreateMovieInformationModelOpened(true);
+                    setIsEditMovieModelOpened(true);
                 }}
-                title="add movie" />
-            <InformationModal isOpened={isEditMovieInformationModelOpened}
-                onClose={() => setIsCreateMovieInformationModelOpened(false)}
+                title="add movie"
+                movie={null} />
+            <InformationModal isOpened={isEditMovieModelOpened}
+                onClose={() => setIsEditMovieModelOpened(false)}
                 title="congratulations !"
                 children="The movie has been added to database successfully" />
         </>
