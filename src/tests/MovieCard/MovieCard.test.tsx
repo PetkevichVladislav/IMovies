@@ -6,12 +6,18 @@ import { IMovieCard, MovieCard } from '../../components/MovieCard/MovieCard';
 
 describe("Movie card", () => {
     const onClickCallback = jest.fn();
+    const onRemoveMenuCallback = jest.fn();
+    const onEditMenuCallback = jest.fn();
     const movieData : IMovieCard = {
         imageUrl: "http://uimage.com",
         movieName: 'Example Movie',
         releaseYear: '2022',
         genres: ['Action', 'Drama'],
         onClick: onClickCallback,
+        movieMenu:{
+            onDeleteClick:onRemoveMenuCallback,
+            onEditCLick:onEditMenuCallback,
+        }
     };
 
     it("When data is valid component should renders correctly", () =>{
@@ -22,7 +28,7 @@ describe("Movie card", () => {
 
     it("when user open forms the data should reneders data", () =>{
         render(<MovieCard {...movieData}/>);
-        expect(screen.getByText("http://uimage.com")).toBeInTheDocument();
+        expect(screen.getByRole("img")).toHaveAttribute("src","http://uimage.com");
         expect(screen.getByText('Example Movie')).toBeInTheDocument();
         expect(screen.getByText('2022')).toBeInTheDocument();
         expect(screen.getByText('Action, Drama')).toBeInTheDocument();

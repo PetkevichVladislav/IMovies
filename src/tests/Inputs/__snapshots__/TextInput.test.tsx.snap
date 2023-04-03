@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Input When data is valid component should renders correctly 1`] = `
+<input
+  className="input text-input"
+  data-testid="text-input"
+  name="data"
+  onChange={[Function]}
+  placeholder="input your data"
+  style={
+    Object {
+      "height": "undefined",
+    }
+  }
+  value="15"
+/>
+`;

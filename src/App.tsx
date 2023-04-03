@@ -1,12 +1,12 @@
 import "./App.scss";
 import "./style.css";
 
-import MainPart from './components/Main/Main';
-import Footer from './components/Footer/Footer';
-import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 import { useState } from "react";
-
+import MainPart from './components/Main/Main';
+import Header from "./components/Header/Header";
+import Footer from './components/Footer/Footer';
 import Image from "./components/MovieCard/Bitmap.png";
+import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 
 function App() {
   const [movieDetails, setMovieDetails] = useState({
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="app">
-      <MovieDetails {...movieDetails}/>
+      <Header/>
       <hr className="app__divider"/>
       <MainPart />
       <Footer />

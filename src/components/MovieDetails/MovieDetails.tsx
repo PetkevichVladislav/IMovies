@@ -23,15 +23,15 @@ export const MovieDetails: FC<IMovieDetails> = (details: IMovieDetails) => {
     return (
         <div className="movie-details">
             <div className="movie-details__icons-container">
-                <div className="movie-details__logo-containter">
+                <div className="movie-details__logo-container">
                     <Logo />
                 </div>
                 <span className="icon-search"></span>
             </div>
             <div className="movie-details__info-container">
-                <div className="movie-details__image-container">
+                <figure className="movie-details__image-container">
                     <img className="movie-details__image" src={details.imageUrl} alt="movie_card"></img>
-                </div>
+                </figure>
                 <div className="movie-details__details-container">
                     <div className="movie-details__heading-container">
                         <p className="movie-details__details-information--title">{details.movieName}</p>

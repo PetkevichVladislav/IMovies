@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Date time Input When data is valid component should renders correctly 1`] = `
+<input
+  className="input date-time-input"
+  data-testid="date-time-input"
+  name="date"
+  onChange={[Function]}
+  type="date"
+  value="15-03-2021"
+/>
+`;

@@ -14,7 +14,7 @@ export interface IDropDownMenu {
 
 export const PopupMenu: FC<IDropDownMenu> = ({ menuItems, onClose }) => {
     const buttons = menuItems.map(({menuItem, onClick}) => {
-        return <li className="drop-down-menu__item" onClick={onClick}>{menuItem}</li>
+        return <li key={menuItem} className="drop-down-menu__item" onClick={onClick}>{menuItem}</li>
     })
     return (
         <div className="drop-down-menu" data-testid="drop-down-menu" onClick={(event) => event.stopPropagation()}>

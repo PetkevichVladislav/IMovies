@@ -4,12 +4,18 @@ import Image from "./Bitmap.png";
 import { FC, useState } from "react";
 import { PopupMenu } from "../PopupMenu/PopupMenu";
 
+export interface MenuModel {
+    onEditCLick: () => void;
+    onDeleteClick: () => void;
+}
+
 export interface IMovieCard {
     imageUrl: string;
     movieName: string;
     releaseYear: string;
     genres: string[];
     onClick: () => void;
+    movieMenu: MenuModel;
 }
 
 export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
@@ -17,11 +23,11 @@ export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
     const [isPopupMenuOpened, setIsPopupMenuOpened] = useState<boolean>(false);
     const [menuItems, setMenuItems] = useState([
         {
-            onClick: () => console.log('Edit'),
+            onClick: movie.movieMenu.onEditCLick,
             menuItem: 'Edit',
         },
         {
-            onClick: () => console.log('Delete'),
+            onClick: movie.movieMenu.onDeleteClick,
             menuItem: 'Delete',
         }
     ]);

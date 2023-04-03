@@ -12,6 +12,7 @@
   &__cross {
     margin: 8px 8px 0px auto;
     cursor: pointer;
+    font-size: 12px;
   }
 
   &__item-container {
@@ -37,5 +38,4 @@
   content: "\e901";
   color: white;
   display: block;
-  font-size: 12px;
 }

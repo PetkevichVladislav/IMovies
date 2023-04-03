@@ -1,0 +1,64 @@
+.modal-base {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(35, 35, 35, 0.911);
+    backdrop-filter: blur(12.2323px);
+    color: #FFFFFF;
+
+    &__logo {
+        padding: 40px 0px 0px 60px;
+        position: absolute;
+    }
+
+    &__window-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    &__window {
+        display: flex;
+        flex-direction: column;
+        background-color: #232323;
+    }
+
+    &__close-element {
+        align-self: flex-end;
+        margin: 10px 10px 0px 0px;
+        font-size: 20px;
+    }
+
+    &__heading {
+        display: flex;
+        text-transform: uppercase;
+        font-size: 40px;
+        margin: 10px 0px 0px 60px;
+    }
+
+    &__children-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 35px 60px 40px 60px;
+        min-width: 550px;
+        min-height: 100px;
+    }
+}
+
+.icon-close {
+    color: white;
+
+    &:hover {
+        &::after{
+            color: #F65261;
+        }
+    }
+
+    ::after {
+        content: "\e901";
+        display: block;
+    }
+}
