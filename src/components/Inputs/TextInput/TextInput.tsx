@@ -5,13 +5,13 @@ import "../Input.scss";
 
 export interface ITextInput{
     placeholder: string;
-    initialValue?: string|null;
+    initialValue?: string;
     height?: string;
     name?: string;
 }
 
-export const TextInput : FC<ITextInput> = ({placeholder, initialValue, height, name}) => {
-    const [value, setValue] = useState(initialValue);
+export const TextInput : FC<ITextInput> = ({placeholder, initialValue = "", height, name}) => {
+    const [value, setValue] = useState<string>(initialValue);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -24,7 +24,7 @@ export const TextInput : FC<ITextInput> = ({placeholder, initialValue, height, n
             name={name} 
             placeholder={placeholder} 
             onChange={handleChange} 
-            value={value!}
+            value={value}
             data-testid="text-input"/>
         </>
     )

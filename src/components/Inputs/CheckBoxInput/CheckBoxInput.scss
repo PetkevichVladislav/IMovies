@@ -15,9 +15,6 @@
             background-color: #E44C5A;
         }
 
-        input:checked~.checkbox-input__checkmark:after {
-            display: block;
-        }
     }
 
     &__input {
@@ -26,10 +23,12 @@
         cursor: pointer;
         height: 0;
         width: 0;
-        
 
-        &:checked~.checkbox-input__checkmark {
+        &:checked~.checkbox-input__checkmark{
             background-color: #E44C5A;
+            &:after {
+                display: block;
+            }
         }
     }
 

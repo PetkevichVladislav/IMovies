@@ -11,7 +11,7 @@ export interface ICheckBoxInput {
 }
 
 export const CheckBoxInput: FC<ICheckBoxInput> = ({defaultChecked = false, label, onChange, name}) => {
-    const [isChecked, setIsChecked] = useState(defaultChecked);
+    const [isChecked, setIsChecked] = useState<boolean>(defaultChecked);
 
     const onChanged = useCallback(() => {
         setIsChecked(!isChecked);

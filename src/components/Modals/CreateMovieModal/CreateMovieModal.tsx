@@ -55,7 +55,7 @@ export const CreateMovieModal: FC<ICreateMovieModal> = ({ onClose, onSubmit, tit
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
         const selectedGenres: Map<string, boolean> = new Map();
-        for (const genre of genreData) {
+        for (let genre of genreData) {
             const name = genre.label.toLowerCase();
             const value = formData.get(name);
 
@@ -97,7 +97,7 @@ export const CreateMovieModal: FC<ICreateMovieModal> = ({ onClose, onSubmit, tit
                     </div>
                     <div className="create-movie-modal__buttons-container">
                         <Button isPrimary={false} text="reset" type="reset"></Button>
-                        <Button isPrimary={true} text="confirm" type="submit"></Button>
+                        <Button isPrimary text="confirm" type="submit"></Button>
                     </div>
                 </form>
             </ModelBase>

@@ -19,5 +19,4 @@ const Template : ComponentStory<typeof TextInput> = (params) =>  <TextInput {...
 export const Default = Template.bind({});
 Default.args = {
     placeholder: "start to input text",
-    initialValue: null,
 };
