@@ -1,46 +1,39 @@
 import "./MovieDetails.scss"
-import { FC } from "react"
 
+import { FC, useCallback } from "react"
 import Logo from "../Logo/Logo";
-
-const bottomBorderScore = 0;
-const topBottomBorderScore = 10;
+import { useMovieContext } from "../MovieListPage/MovieListPage";
+import { MovieModel } from "../../models/MovieModel";
 
 export interface IMovieDetails {
-    imageUrl: string;
-    movieName: string;
-    movieGenres: string[];
-    releaseYear: string;
-    rating: number;
-    duration: string;
-    description: string;
+    movie?: MovieModel | null | undefined;
 }
 
-export const MovieDetails: FC<IMovieDetails> = (details: IMovieDetails) => {
-    let score = details.rating > topBottomBorderScore ? 10 : details.rating;
-    score = score < bottomBorderScore ? bottomBorderScore : score
-
+export const MovieDetails: FC<IMovieDetails> = ({movie: details}) => {
+    const movieContextModel = useMovieContext();
+    const onIconClick = useCallback(() => movieContextModel?.setSelectedMovieId(null), [movieContextModel]);
+    
     return (
         <div className="movie-details">
             <div className="movie-details__icons-container">
                 <div className="movie-details__logo-container">
                     <Logo />
                 </div>
-                <span className="icon-search"></span>
+                <span className="icon-search" onClick={onIconClick}></span>
             </div>
             <div className="movie-details__info-container">
                 <figure className="movie-details__image-container">
-                    <img className="movie-details__image" src={details.imageUrl} alt="movie_card"></img>
+                    <img className="movie-details__image" src={details?.imagePath} alt="movie_card"></img>
                 </figure>
                 <div className="movie-details__details-container">
                     <div className="movie-details__heading-container">
-                        <p className="movie-details__details-information--title">{details.movieName}</p>
-                        <p className="movie-details__details-information--score">{score}</p>
+                        <p className="movie-details__details-information--title">{details?.title}</p>
+                        <p className="movie-details__details-information--score">{details?.rating}</p>
                     </div>
-                    <p className="movie-details__details-information--genre">{details.movieGenres.join(", ")}</p>
-                    <p className="movie-details__details-information--release-date">{details.releaseYear}</p>
-                    <p className="movie-details__details-information--duration">{details.duration}</p>
-                    <p className="movie-details__details-information--description">{details.description}</p>
+                    <p className="movie-details__details-information--genre">{details?.genres.join(", ")}</p>
+                    <p className="movie-details__details-information--release-date">{details?.releaseDate.getFullYear()}</p>
+                    <p className="movie-details__details-information--duration">{details?.runtime} minutes</p>
+                    <p className="movie-details__details-information--description">{details?.overview}</p>
                 </div>
             </div>
         </div>

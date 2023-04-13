@@ -8,7 +8,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: "Component renders count of movies with ability to increment and dicrement by clicking on the buttons."
+                component: "Component renders count of movies with ability to increment and decrement by clicking on the buttons."
             }
         }
     }
@@ -18,5 +18,5 @@ const Template : ComponentStory<typeof Counter> = (params) =>  <Counter {...para
 
 export const Default = Template.bind({});
 Default.args = {
-    initialValue : 0,
+    count : 0,
 };

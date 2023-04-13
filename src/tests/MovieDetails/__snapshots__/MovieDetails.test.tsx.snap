@@ -27,6 +27,7 @@ exports[`Movie details When data is valid component should renders correctly 1`]
     </div>
     <span
       className="icon-search"
+      onClick={[Function]}
     />
   </div>
   <div
@@ -38,7 +39,6 @@ exports[`Movie details When data is valid component should renders correctly 1`]
       <img
         alt="movie_card"
         className="movie-details__image"
-        src="http://uimage.com"
       />
     </figure>
     <div
@@ -49,35 +49,25 @@ exports[`Movie details When data is valid component should renders correctly 1`]
       >
         <p
           className="movie-details__details-information--title"
-        >
-          Example Movie
-        </p>
+        />
         <p
           className="movie-details__details-information--score"
-        >
-          9.3
-        </p>
+        />
       </div>
       <p
         className="movie-details__details-information--genre"
-      >
-        Action, Drama
-      </p>
+      />
       <p
         className="movie-details__details-information--release-date"
-      >
-        2022
-      </p>
+      />
       <p
         className="movie-details__details-information--duration"
       >
-        2h 35min
+         minutes
       </p>
       <p
         className="movie-details__details-information--description"
-      >
-        Movie description
-      </p>
+      />
     </div>
   </div>
 </div>

@@ -24,7 +24,7 @@
     }
 
     &__image-container {
-        width: 323.41px;
+        width: 323px;
         max-height: 486px;
     }
 
@@ -34,6 +34,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        width: inherit;
     }
 
     &__heading-container {
@@ -98,7 +99,8 @@
 
 .icon-search {
     transform: rotateY(180deg);
-    
+    cursor: pointer;
+
     &::before{
         content: "\e902";
         color: #F65261;

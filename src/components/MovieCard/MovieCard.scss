@@ -47,6 +47,19 @@
         top:15px;
         right: 15px;
     }
+
+    &__image{
+        width: 322px;
+        height: 455px;
+    }
+
+    &__image-container{
+        background-color: #FFFFFF;
+        margin: 0px;
+        width: 322px;
+        height: 455px;
+        cursor: pointer;
+    }
 }
 
 .icon-more-vertical::before{

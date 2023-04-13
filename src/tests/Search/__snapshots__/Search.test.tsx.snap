@@ -10,7 +10,7 @@ exports[`Search When data is valid component renders correctly 1`] = `
     onChange={[Function]}
     onFocus={[Function]}
     placeholder="What do you want to watch?"
-    value="Action"
+    value=""
   />
   <button
     className="search__button"
@@ -18,5 +18,43 @@ exports[`Search When data is valid component renders correctly 1`] = `
   >
     SEARCH
   </button>
+</div>
+`;
+
+exports[`Search component renders correctly 1`] = `
+<div>
+  <div
+    class="search"
+  >
+    <input
+      class="search__input"
+      placeholder="What do you want to watch?"
+      value="Action"
+    />
+    <button
+      class="search__button"
+    >
+      SEARCH
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Search renders correctly 1`] = `
+<div>
+  <div
+    class="search"
+  >
+    <input
+      class="search__input"
+      placeholder="What do you want to watch?"
+      value="Action"
+    />
+    <button
+      class="search__button"
+    >
+      SEARCH
+    </button>
+  </div>
 </div>
 `;

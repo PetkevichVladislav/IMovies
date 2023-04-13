@@ -2,7 +2,8 @@ import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
-import { SortControl, SortOption } from '../../components/SortControl/SortControl';
+import { SortControl } from '../../components/SortControl/SortControl';
+import { SortOption } from '../../models/enum/SortOption';
 
 describe("Sort control", () => {
     const onClickCallback = jest.fn();

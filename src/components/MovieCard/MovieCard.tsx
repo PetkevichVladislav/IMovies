@@ -1,8 +1,8 @@
 import "./MovieCard.scss"
-import Image from "./Bitmap.png";
 
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { PopupMenu } from "../PopupMenu/PopupMenu";
+import { CardModel } from "../../models/CardModel";
 
 export interface MenuModel {
     onEditCLick: () => void;
@@ -10,27 +10,25 @@ export interface MenuModel {
 }
 
 export interface IMovieCard {
-    imageUrl: string;
-    movieName: string;
-    releaseYear: string;
-    genres: string[];
-    onClick: () => void;
+    card : CardModel;
+    id: string;
+    onCardClick: () => void;
     movieMenu: MenuModel;
 }
 
-export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
+export const MovieCard: FC<IMovieCard> = ({card, id, onCardClick, movieMenu}) => {
     const [isMouseHoveredOnCard, setIsMouseHoveredOnCard] = useState<boolean>(false);
     const [isPopupMenuOpened, setIsPopupMenuOpened] = useState<boolean>(false);
-    const [menuItems, setMenuItems] = useState([
+    const menuItems = useMemo( () => [
         {
-            onClick: movie.movieMenu.onEditCLick,
+            onClick: movieMenu.onEditCLick,
             menuItem: 'Edit',
         },
         {
-            onClick: movie.movieMenu.onDeleteClick,
+            onClick: movieMenu.onDeleteClick,
             menuItem: 'Delete',
         }
-    ]);
+    ], [movieMenu]);
 
     const handleClosePopupMenu = () => {
         setIsPopupMenuOpened(false);
@@ -46,7 +44,7 @@ export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
     }
 
     const handleCardClick = () => {
-        movie.onClick();
+        onCardClick();
     }
 
     const handleMenuClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -55,7 +53,7 @@ export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
     }
 
     return (
-        <div className="movie-card" data-testid="movie-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleCardClick}>
+        <div className="movie-card" id={id} data-testid="movie-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleCardClick}>
             {isMouseHoveredOnCard &&
                 <span className="movie-card__context-menu icon-more-vertical" data-testid="card-menu-item" onClick={(event) => handleMenuClick(event)}></span>
             }
@@ -64,12 +62,14 @@ export const MovieCard: FC<IMovieCard> = (movie: IMovieCard) => {
                     <PopupMenu menuItems={menuItems} onClose={handleClosePopupMenu} />
                 </div>
             }
-            <img className="movie-card__image" src={movie.imageUrl} alt="movie_card" />
+            <figure className="movie-card__image-container">
+            <img className="movie-card__image" src={card.imageUrl} alt={card.movieName + "_movie_poster"} />
+            </figure>
             <div className="movie-card__description-container">
-                <p className="movie-card__description movie-card__description--title">{movie.movieName}</p>
-                <p className="movie-card__description movie-card__description--production-year">{movie.releaseYear}</p>
+                <p className="movie-card__description movie-card__description--title">{card.movieName}</p>
+                <p className="movie-card__description movie-card__description--production-year">{card.releaseYear}</p>
             </div>
-            <p className="movie-card__description movie-card__description--genre">{movie.genres.join(", ")}</p>
+            <p className="movie-card__description movie-card__description--genre">{card.genres.join(", ")}</p>
         </div>
     );
 }

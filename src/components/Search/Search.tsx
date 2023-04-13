@@ -1,18 +1,17 @@
+import { MovieContextModel } from '../../models/context/MovieContextModel';
+import { useMovieContext } from '../MovieListPage/MovieListPage';
 import './Search.scss';
 
 import { useState, useCallback, useEffect, FC } from 'react';
 
-interface ISearchProps {
-    initialQuery: string,
-    onSearch: (query: string) => void,
-}
+interface ISearchProps { }
 
-const Search: FC<ISearchProps> = ({ initialQuery, onSearch }) => {
-    const [query, setQuery] = useState<string>(initialQuery);
-    const [isFocus, setIsFocus] = useState<boolean>(false);
-
-    const internalSearch = useCallback(() => { onSearch(query) }, [onSearch, query])
+const Search: FC<ISearchProps> = () => {
+    const movieContextModel : MovieContextModel | null = useMovieContext();
+    const [query, setQuery] = useState<string>(movieContextModel ? movieContextModel?.searchQuery : "");
+    const internalSearch = useCallback(() => { movieContextModel?.setSearchQuery(query) }, [movieContextModel,query]);
     
+    const [isFocus, setIsFocus] = useState<boolean>(false);
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent)  => {
             const isEnterPressed = event.key === "Enter";

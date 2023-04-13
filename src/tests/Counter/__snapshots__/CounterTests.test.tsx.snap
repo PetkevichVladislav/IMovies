@@ -14,17 +14,5 @@ exports[`Counter When data is valid component should renders correctly 1`] = `
   >
     movies found
   </p>
-  <button
-    className="button-increment"
-    onClick={[Function]}
-  >
-    increment
-  </button>
-  <button
-    className="button-decrement"
-    onClick={[Function]}
-  >
-    decrement
-  </button>
 </div>
 `;

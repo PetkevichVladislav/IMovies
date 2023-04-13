@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { SortControl, SortOption } from '../../components/SortControl/SortControl';
+import { SortControl } from '../../components/SortControl/SortControl';
+import { SortOption } from '../../models/enum/SortOption';
 
 
 
@@ -19,6 +20,5 @@ const Template : ComponentStory<typeof SortControl> = (args) =>  <SortControl {.
 
 export const Default = Template.bind({});
 Default.args = {
-    onChange: (currentOption:SortOption) => console.log(currentOption),
     sortingOption: SortOption.ReleaseDate,
 };
