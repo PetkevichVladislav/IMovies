@@ -7,13 +7,13 @@ import { Genre } from "../../models/enum/MenuGenre";
 import { SortOption } from "../../models/enum/SortOption";
 
 const Menu = () => {
-    const genres = useMemo(() => Object.values(Genre), []);
-    
+    const genres = useMemo<Genre[]>(() => Object.values(Genre), []);
+
     return (
         <menu className="menu">
             <div className="sorting">
-                <List genreNames={genres}/>
-                <SortControl sortingOption={SortOption.ReleaseDate}/>
+                <List genreNames={genres} />
+                <SortControl sortingOption={SortOption.ReleaseDate} />
             </div>
             <hr className="menu__line--bold" />
             <hr className="menu__line--thin" />

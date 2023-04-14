@@ -15,10 +15,4 @@ export default {
 
 const Template : ComponentStory<typeof MovieCard> = (args) =>  <MovieCard {...args}/>;
 
-// export const Default = Template.bind({});
-// Default.args = {
-//     imageUrl: Image,
-//     movieName: 'Example Movie',
-//     releaseYear: '2022',
-//     genres: ['Action', 'Drama'],
-// };
+export const Default = Template.bind({});

@@ -19,7 +19,7 @@ export interface IMovieCard {
 export const MovieCard: FC<IMovieCard> = ({card, id, onCardClick, movieMenu}) => {
     const [isMouseHoveredOnCard, setIsMouseHoveredOnCard] = useState<boolean>(false);
     const [isPopupMenuOpened, setIsPopupMenuOpened] = useState<boolean>(false);
-    const menuItems = useMemo( () => [
+    const menuItems = useMemo(() => [
         {
             onClick: movieMenu.onEditCLick,
             menuItem: 'Edit',

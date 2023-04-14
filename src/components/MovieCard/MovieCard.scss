@@ -54,7 +54,7 @@
     }
 
     &__image-container{
-        background-color: #FFFFFF;
+        background-color: var(--empty-image-color);
         margin: 0px;
         width: 322px;
         height: 455px;

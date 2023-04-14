@@ -6,7 +6,7 @@ import { useMovieContext } from "../MovieListPage/MovieListPage";
 import { MovieModel } from "../../models/MovieModel";
 
 export interface IMovieDetails {
-    movie?: MovieModel | null | undefined;
+    movie?: MovieModel | null;
 }
 
 export const MovieDetails: FC<IMovieDetails> = ({movie: details}) => {
