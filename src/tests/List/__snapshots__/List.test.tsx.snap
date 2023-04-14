@@ -8,43 +8,31 @@ exports[`List When data is valid component should renders correctly 1`] = `
     className="list__item"
     onClick={[Function]}
   >
-    Action
+    ALL
   </li>
   <li
     className="list__item"
     onClick={[Function]}
   >
-    Adventure
+    DOCUMENTARY
   </li>
   <li
     className="list__item"
     onClick={[Function]}
   >
-    Comedy
+    COMEDY
   </li>
   <li
     className="list__item"
     onClick={[Function]}
   >
-    Drama
-  </li>
-  <li
-    className="list__item list__item--selected"
-    onClick={[Function]}
-  >
-    Sci-Fi
+    HORROR
   </li>
   <li
     className="list__item"
     onClick={[Function]}
   >
-    Thriller
-  </li>
-  <li
-    className="list__item"
-    onClick={[Function]}
-  >
-    Western
+    CRIME
   </li>
 </ul>
 `;

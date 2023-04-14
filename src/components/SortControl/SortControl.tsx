@@ -1,27 +1,24 @@
-import { FC, useState } from "react";
 import "./SortControl.scss"
 
-export enum SortOption {
-    ReleaseDate = "RELEASE DATE",
-    Title = "TITLE",
-}
+import { FC, useCallback } from "react";
+import { SortOption } from "../../models/enum/SortOption";
+import { useMovieContext } from "../MovieListPage/MovieListPage";
 
 export interface ISortControl {
-    sortingOption: SortOption;
-    onChange: (sortOption: SortOption) => void,
+    sortingOption: SortOption,    
 }
 
-export const SortControl: FC<ISortControl> = ({ sortingOption, onChange }) => {
-    const [selectedSortOption, setSelectedSortOption] = useState(sortingOption);
+export const SortControl: FC<ISortControl> = ({ sortingOption }) => {
+    const movieContextModel = useMovieContext();    
+    const handleSortingOptionChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+        movieContextModel?.setSortCriterion(event.target.value as SortOption);
+    }, [movieContextModel]);
 
-    function handleSortingOptionChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        setSelectedSortOption(event.target.value as SortOption);
-    }
     return (
         <div className="sort-control">
             <p className="sort-control__text sort-control__text--sorting">SORT BY</p>
             <div className="sort-control__select-container">
-                <select className="sort-control__select" value={selectedSortOption} data-testid="selected-sort-option" onChange={handleSortingOptionChange}>
+                <select className="sort-control__select" value={movieContextModel?.sortCriterion} data-testid="selected-sort-option" onChange={handleSortingOptionChange}>
                     {Object.values(SortOption).map((sortOption) => (
                         <option className="sort-control__text sort-control__text--sorting-option" key={sortOption} value={sortOption}>
                             {sortOption}

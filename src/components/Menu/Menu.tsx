@@ -1,22 +1,19 @@
 import "./Menu.scss"
 
 import List from "../List/List";
-import { useCallback, useState } from "react";
-import { SortControl, SortOption } from "../SortControl/SortControl";
+import { useMemo } from "react";
+import { SortControl } from "../SortControl/SortControl";
+import { Genre } from "../../models/enum/MenuGenre";
+import { SortOption } from "../../models/enum/SortOption";
 
 const Menu = () => {
-    const [itemNames, setItemNames] = useState<string[]>(["Action", "Comedy", "Drama", "Sci-Fi", "Thriller", "Western"]);
-    const [preselectedItemName, setSelectedItemName] = useState<string>("Sci-Fi");
-    const onSelect = useCallback((query: string) => { console.log(query); }, []);
-    const onSortOptionChange = useCallback((currentOption:SortOption) => console.log(currentOption), []);
-    
+    const genres = useMemo<Genre[]>(() => Object.values(Genre), []);
+
     return (
         <menu className="menu">
             <div className="sorting">
-                <List itemNames={itemNames}
-                    preselectedItemName={preselectedItemName}
-                    onSelect={onSelect} />
-                <SortControl sortingOption={SortOption.ReleaseDate} onChange={onSortOptionChange}/>
+                <List genreNames={genres} />
+                <SortControl sortingOption={SortOption.ReleaseDate} />
             </div>
             <hr className="menu__line--bold" />
             <hr className="menu__line--thin" />

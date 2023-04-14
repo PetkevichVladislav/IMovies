@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import List from '../../../../components/List/List';
+import { Genre } from '../../../../models/enum/MenuGenre';
 
 
 export default {
@@ -18,15 +19,11 @@ const Template : ComponentStory<typeof List> = (params) =>  <List {...params}/>;
 
 export const Pink = Template.bind({});
 Pink.args = {
-    itemNames : ["Action", "Adventure", "Comedy", "Drama", "Sci-Fi", "Thriller", "Western"],
-    preselectedItemName: "Sci-Fi",
-    onSelect: (itemName : string) => console.log(itemName),
+    genreNames : Object.values(Genre),
 };
 
 export const Blue = Template.bind({});
 Blue.args = {
-    itemNames : ["Action", "Adventure", "Comedy", "Drama", "Sci-Fi", "Thriller", "Western"],
-    preselectedItemName: "Sci-Fi",
-    onSelect: (itemName : string) => console.log(itemName),
+    genreNames : Object.values(Genre),
     selectedItemColor: "blue",
 };

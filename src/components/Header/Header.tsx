@@ -7,13 +7,8 @@ import { CreateMovieModal } from "../Modals/CreateMovieModal/CreateMovieModal";
 import { InformationModal } from "../Modals/InformationModal/InformationModal";
 
 function Header() {
-    const [searchQuery, setSearchQuery] = useState<string>('Comedy');
     const [isCreateMovieModelOpened, setIsCreateMovieModelOpened] = useState<boolean>(false);
     const [isEditMovieModelOpened, setIsEditMovieModelOpened] = useState<boolean>(false);
-
-    const searchByQuery = useCallback((query: string) => {
-        console.log(query);
-    }, [])
 
     return (
         <>
@@ -26,7 +21,7 @@ function Header() {
                     <h1 className="search-container__heading">
                         FIND YOUR MOVIE
                     </h1>
-                    <Search initialQuery={searchQuery} onSearch={searchByQuery} />
+                    <Search/>
                 </div>
             </header>
             <CreateMovieModal isOpened={isCreateMovieModelOpened}

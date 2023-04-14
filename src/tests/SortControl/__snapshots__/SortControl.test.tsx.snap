@@ -16,7 +16,6 @@ exports[`Sort control When data is valid component should renders correctly 1`] 
       className="sort-control__select"
       data-testid="selected-sort-option"
       onChange={[Function]}
-      value="RELEASE DATE"
     >
       <option
         className="sort-control__text sort-control__text--sorting-option"

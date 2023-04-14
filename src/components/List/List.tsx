@@ -1,27 +1,28 @@
+import { Genre } from "../../models/enum/MenuGenre";
+import { useMovieContext } from "../MovieListPage/MovieListPage";
 import "./List.scss";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 
 const selectedItemClassName = "list__item list__item--selected";
 const unselectedItemClassName = "list__item";
 
 interface IGenreListProps {
-    itemNames: string[],
-    preselectedItemName: string,
-    onSelect: (itemName: string) => void,
+    genreNames: Genre[],
     selectedItemColor?: string,
 }
 
-export const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSelect, selectedItemColor}) => {
-    const [selectedItemName, setSelectedItemName] = useState<string>(preselectedItemName);
-    const listItems = itemNames.map((itemName) => {
-        const className = itemName === selectedItemName ? selectedItemClassName : unselectedItemClassName;
-        return <li key={itemName} className={className} onClick={() => selectItem(itemName)}>{itemName}</li>;
+export const List: FC<IGenreListProps> = ({ genreNames, selectedItemColor}) => {
+    const movieContextModel = useMovieContext();
+
+    const listGenres = genreNames.map((genre) => {
+        const className = genre === movieContextModel?.selectedGenre ? selectedItemClassName : unselectedItemClassName;
+        return <li key={genre} className={className} onClick={() => selectItem(genre)}>{genre}</li>;
     });
 
-    const selectItem = (itemName: string) => {
-        setSelectedItemName(itemName);
-        onSelect(itemName);
+    const selectItem = (genreName: string) => {
+        const selectedGenre = genreName as Genre;
+        movieContextModel?.setSelectedGenre(selectedGenre);
     }
 
     const listClassNames : string[] = ["list"];
@@ -30,7 +31,7 @@ export const List: FC<IGenreListProps> = ({ itemNames, preselectedItemName, onSe
     }
     return (
         <ul className={listClassNames.join(" ")}>
-            {listItems}
+            {listGenres}
         </ul>
     );
 }
