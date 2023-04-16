@@ -1,19 +1,20 @@
 describe('Card movie', () => {
-    const getCardContainer = () => cy.get("div").should("have.class", "movie-cards-container");
-    const getCardMenuIcon = () => cy.get("span").should("have.class", "movie-card__context-menu");
+    const getCard = () => cy.get(".movie-card").first();
+    const getCardMenuIcon = () => cy.get(".movie-card__context-menu");
     const getMenu = () => cy.get("div").should("have.class", "movie-card__popupmenu_container");
 
     beforeEach(() => {
         cy.visit("/");
+        cy.wait(500);
     })
 
     it("When hover on card should display cardmenu icon", () => {
-        getCardContainer().children().first().trigger('mouseover');
+        getCard().trigger('mouseover');
         getCardMenuIcon().should('be.visible');
     })
 
     it("When click on card menu icon popup menu should display", () => {
-        getCardContainer().children().first().trigger('mouseover');
+        getCard().trigger('mouseover');
         getCardMenuIcon().last().click();
         const menu = getMenu();
         menu.should('be.visible');

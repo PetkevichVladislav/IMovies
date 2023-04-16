@@ -25,10 +25,14 @@ exports[`Movie details When data is valid component should renders correctly 1`]
         </p>
       </div>
     </div>
-    <span
-      className="icon-search"
+    <a
+      href="/"
       onClick={[Function]}
-    />
+    >
+      <span
+        className="icon-search"
+      />
+    </a>
   </div>
   <div
     className="movie-details__info-container"

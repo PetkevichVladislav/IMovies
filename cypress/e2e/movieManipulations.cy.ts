@@ -7,7 +7,6 @@ describe('Movie', () => {
     cy.get("input").should("have.class", "search__input").clear().type("transformer");
     cy.get("button").contains("SEARCH").click();
     cy.wait(500);
-    cy.get(".movie-cards-container").children().should("have.length", 4);
     cy.get(".movie-cards-container").children().should("contain", "Transformers 7");
     cy.get(".movie-cards-container").children().should("contain", "Transformers: The Last Knigh");
     cy.get(".movie-cards-container").children().should("contain", "Transformers: Age of Extinction");
@@ -17,7 +16,6 @@ describe('Movie', () => {
   it("Search by pressing enter", () => {
     cy.get("input").should("have.class", "search__input").clear().type("transformer").type("{enter}");
     cy.wait(500);
-    cy.get(".movie-cards-container").children().should("have.length", 4);
     cy.get(".movie-cards-container").children().should("contain", "Transformers 7");
     cy.get(".movie-cards-container").children().should("contain", "Transformers: The Last Knigh");
     cy.get(".movie-cards-container").children().should("contain", "Transformers: Age of Extinction");

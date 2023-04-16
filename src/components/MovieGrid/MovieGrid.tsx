@@ -27,7 +27,6 @@ const MovieGrid = () => {
         const movieData : IMovieCard = {
             id: movie.id,
             card: card,
-            onCardClick: () => movieContextModel.setSelectedMovieId(movie.id),
             movieMenu: {
                 onDeleteClick: () => {
                     setIsDeleteMovieConfirmationModelOpened(true);

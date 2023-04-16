@@ -1,25 +1,26 @@
 import "./MovieDetails.scss"
 
-import { FC, useCallback } from "react"
 import Logo from "../Logo/Logo";
-import { useMovieContext } from "../MovieListPage/MovieListPage";
 import { MovieModel } from "../../models/MovieModel";
+import { Link, useSearchParams } from "react-router-dom";
+import { FC, useMemo } from "react";
 
 export interface IMovieDetails {
     movie?: MovieModel | null;
 }
 
-export const MovieDetails: FC<IMovieDetails> = ({movie: details}) => {
-    const movieContextModel = useMovieContext();
-    const onIconClick = useCallback(() => movieContextModel?.setSelectedMovieId(null), [movieContextModel]);
-    
+export const MovieDetails: FC<IMovieDetails> = ({ movie: details }) => {
+    const [searchParams] = useSearchParams();
+    const link = useMemo(() => "/?" + searchParams.toString(), [searchParams]);
     return (
         <div className="movie-details">
             <div className="movie-details__icons-container">
                 <div className="movie-details__logo-container">
                     <Logo />
                 </div>
-                <span className="icon-search" onClick={onIconClick}></span>
+                <Link to={link}>
+                    <span className="icon-search" />
+                </Link>
             </div>
             <div className="movie-details__info-container">
                 <figure className="movie-details__image-container">
