@@ -8,20 +8,20 @@ export interface IDropDownInput {
     children?: ReactNode;
 }
 
-export const DropDownInput: FC<IDropDownInput> = ({ placeholder, children}) => {
+export const DropDownInput: FC<IDropDownInput> = ({ placeholder, children }) => {
     const [isExpanded, setIsDropDownExpanded] = useState<boolean>(false);
 
     const onDropDownClicked = () => {
         setIsDropDownExpanded(!isExpanded);
     };
-    
+
     return (
-        <>
+        <div className="drop-down-input">
             <div className="drop-down-input__select-container" onClick={onDropDownClicked} data-testid="drop-down-container">
                 <select className="input drop-down-input__select">
                     <option>{placeholder}</option>
                 </select>
-                <span className={`drop-down-input__appearance icon-arrow-down ${isExpanded ? "rotated": ""}`}></span>
+                <span className={`drop-down-input__appearance icon-arrow-down ${isExpanded ? "rotated" : ""}`}></span>
                 <div className="drop-down-input__content-container"></div>
             </div>
             {isExpanded &&
@@ -29,7 +29,7 @@ export const DropDownInput: FC<IDropDownInput> = ({ placeholder, children}) => {
                     {children}
                 </div>
             }
-        </>
+        </div>
     )
 }
 
