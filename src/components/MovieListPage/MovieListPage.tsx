@@ -9,44 +9,62 @@ import { SortOption } from "../../models/enum/SortOption";
 import { GetMovie, GetMovies } from "../../services/MovieRequestService";
 import { SearchOptions } from "../../models/enum/SearchOptions";
 import { MovieContextModel } from "../../models/context/MovieContextModel";
-import { FC, createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { GetMoviesRequestModel } from "../../models/request/GetMoviesRequestModel";
 import { mapSortOptionToRequestSortOption } from "../../services/SortOptionMapService";
+import { FC, createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { MovieDetails } from '../MovieDetails/MovieDetails';
+import { BrowserRouter, Outlet, Route, Routes, useLocation, useParams, useSearchParams } from "react-router-dom";
 
 
 export const MovieContext = createContext<MovieContextModel | null>(null);
 
 export const useMovieContext = (): MovieContextModel | null => useContext(MovieContext);
 
-function capitalizeWords(string: string) {
+function capitalizeWords(string: string): string {
     return string
-    .split(" ")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(" ");
+}
+
+function stringifyParametersToUrlQuery(parameters: SearchQueryParameters): string {
+    return Object.keys(parameters).map(function (key) {
+        const value = parameters[key as keyof SearchQueryParameters]?.toLocaleLowerCase();
+        if (value !== "") {
+            return key + '=' + parameters[key as keyof SearchQueryParameters]?.toLocaleLowerCase();
+        }
+        else {
+            return "";
+        }
+    }).join('&');
+}
+
+interface SearchQueryParameters {
+    query?: string | null,
+    sorting?: SortOption | null,
+    genre?: Genre | null,
 }
 
 export const MovieListPage: FC = () => {
-    const [searchQuery, setSearchQuery] = useState<string>("");
-    const [sortCriterion, setSortCriterion] = useState<SortOption>(SortOption.ReleaseDate);
-    const [selectedGenre, setSelectedGenre] = useState<Genre>(Genre.All);
+    const [searchParams, setSearchQueryParams] = useSearchParams();
+    const query = searchParams.get("query") ?? "";
+    const sorting = searchParams.get("sorting")?.toLocaleUpperCase() as SortOption ?? SortOption.ReleaseDate;
+    const genre = searchParams.get("genre")?.toLocaleUpperCase() as Genre ?? Genre.All;
+    const setSearchParams = useCallback((parameters: SearchQueryParameters) => {
+        const queryString = stringifyParametersToUrlQuery(parameters);
+        setSearchQueryParams(queryString);
+    }, [setSearchQueryParams]);
+
     const [movieList, setMovieList] = useState<MovieModel[]>([]);
     const [moviesQuantity, setMovieQuantity] = useState<number>(0);
-    const [selectedMovieId, setSelectedMovieId] = useState<string | null | undefined>();
-    const [selectedMovie, setSelectedMovieModel] = useState<MovieModel | null | undefined>(null);
     const firstRender = useRef(true);
-    const getMovieAbortController = useRef<AbortController | null>(null);
+
     const filteringAndSortingAbortController = useRef<AbortController | null>(null);
-    
-    const updateSelectedGenre = useCallback((genre: Genre) => {
-        setSelectedGenre(genre);
-        setSearchQuery("");
-    },[setSearchQuery, setSelectedGenre]);
 
     // First rendering.
     useEffect(() => {
         const movieRequestParameters: GetMoviesRequestModel = {
-            sortBy: mapSortOptionToRequestSortOption(sortCriterion),
+            sortBy: mapSortOptionToRequestSortOption(sorting),
             sortOrder: SortOrder.Descending,
         };
 
@@ -54,34 +72,33 @@ export const MovieListPage: FC = () => {
             setMovieList(movieModels);
             setMovieQuantity(movieModels.length)
         });
-        }, []);
-    
+    }, []);
+
     // Update sorting and ordering options.
     useEffect(() => {
-        if(firstRender.current) {
+        if (firstRender.current) {
             firstRender.current = false;
             return;
         }
 
-        if(filteringAndSortingAbortController.current) {
+        if (filteringAndSortingAbortController.current) {
             filteringAndSortingAbortController.current.abort();
         }
 
         const requestModel: GetMoviesRequestModel = {
-            sortBy: mapSortOptionToRequestSortOption(sortCriterion),
+            sortBy: mapSortOptionToRequestSortOption(sorting),
             sortOrder: SortOrder.Descending,
-            search: capitalizeWords(selectedGenre),
+            search: capitalizeWords(genre),
             searchBy: SearchOptions.Genres,
         };
 
-        if (searchQuery || searchQuery !== "" || selectedGenre === Genre.All) {
-            requestModel.search = searchQuery;
+        if (query || query !== "" || genre === Genre.All) {
+            requestModel.search = query;
             requestModel.searchBy = SearchOptions.Title;
-            setSelectedGenre(Genre.All);
         }
 
         filteringAndSortingAbortController.current = new AbortController();
-        const requestParameters : RequestInit = {
+        const requestParameters: RequestInit = {
             signal: filteringAndSortingAbortController.current!.signal,
         }
 
@@ -89,48 +106,29 @@ export const MovieListPage: FC = () => {
             setMovieList(movieModels);
             setMovieQuantity(movieModels.length)
         })
-    }, [sortCriterion, searchQuery, selectedGenre, firstRender, filteringAndSortingAbortController]);
-
-    // Select or unselect movie.
-    useEffect(() => {
-        if(firstRender.current) {
-            firstRender.current = false;
-            return;
-        }
-
-        if(getMovieAbortController.current) {
-            getMovieAbortController.current.abort();
-        }
-
-        if(selectedMovieId) {
-            getMovieAbortController.current = new AbortController();
-            GetMovie(selectedMovieId).then(movieModel => {
-                setSelectedMovieModel(movieModel);
-            });
-        }
-    }, [selectedMovieId, getMovieAbortController]);
+    }, [sorting, query, genre, searchParams, firstRender, filteringAndSortingAbortController, setSearchParams]);
 
     const movieContextModel: MovieContextModel = {
-        selectedGenre: selectedGenre,
-        setSelectedGenre: updateSelectedGenre,
+        selectedGenre: genre,
+        setSelectedGenre: (genre: Genre) => {
+            setSearchParams({ query: "", genre: genre, sorting: sorting })
+        },
         moviesQuantity: moviesQuantity,
         movieList: movieList,
-        searchQuery: searchQuery,
-        setSearchQuery: setSearchQuery,
-        sortCriterion: sortCriterion,
-        setSortCriterion: setSortCriterion,
-        selectedMovieId: selectedMovieId,
-        setSelectedMovieId: setSelectedMovieId,
+        searchQuery: query,
+        setSearchQuery: (query: string) => {
+            setSearchParams({ query: query, genre: Genre.All, sorting: sorting })
+        },
+        sortCriterion: sorting,
+        setSortCriterion: (sorting: SortOption) => {
+            setSearchParams({ query: query, genre: genre, sorting: sorting })
+        },
     }
 
     return (
         <>
             <MovieContext.Provider value={movieContextModel}>
-                { 
-                    selectedMovieId 
-                    ? <MovieDetails movie={selectedMovie}/> 
-                    : <Header/>
-                }
+                <Outlet />
                 <hr className="app__divider" />
                 <MainPart />
                 <Footer />

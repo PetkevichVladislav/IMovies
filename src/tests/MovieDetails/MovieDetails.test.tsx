@@ -4,16 +4,20 @@ import '@testing-library/jest-dom';
 
 import { MovieDetails } from '../../components/MovieDetails/MovieDetails';
 import { MovieModel } from '../../models/MovieModel';
+import { MemoryRouter } from 'react-router-dom';
 
 describe("Movie details", () => {
-    it("When data is valid component should renders correctly", () =>{
-        const tree = renderer.create(<MovieDetails/>)
-        .toJSON();
+    it("When data is valid component should renders correctly", () => {
+        const tree = renderer.create(
+            <MemoryRouter>
+                <MovieDetails />
+            </MemoryRouter>)
+            .toJSON();
         expect(tree).toMatchSnapshot();;
     });
 
-    it("when user open forms the data should renders data", () =>{
-        const movieModel : MovieModel = {
+    it("when user open forms the data should renders data", () => {
+        const movieModel: MovieModel = {
             id: "0",
             title: 'Example Movie',
             genres: ["Action", "Sci-Fi"],
@@ -23,12 +27,16 @@ describe("Movie details", () => {
             releaseDate: new Date(2022, 8, 10),
             runtime: 180,
         }
-        render(<MovieDetails movie={movieModel}/>);
+        render(
+            <MemoryRouter>
+                <MovieDetails movie={movieModel} />
+            </MemoryRouter>
+        );
         expect(screen.getByText(movieModel.title)).toBeInTheDocument();
         expect(screen.getByText(movieModel.releaseDate.getFullYear())).toBeInTheDocument();
         expect(screen.getByText(movieModel.genres.join(", "))).toBeInTheDocument();
         expect(screen.getByText(movieModel.overview)).toBeInTheDocument();
-        expect(screen.getByText((movieModel.runtime ? movieModel.runtime : "" ) + " minutes")).toBeInTheDocument();
+        expect(screen.getByText((movieModel.runtime ? movieModel.runtime : "") + " minutes")).toBeInTheDocument();
         expect(screen.getByText(movieModel.rating)).toBeInTheDocument();
     });
 });

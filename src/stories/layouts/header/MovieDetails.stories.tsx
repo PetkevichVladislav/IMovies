@@ -1,8 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { MovieDetails } from '../../../components/MovieDetails/MovieDetails';
 
-import Image from "../../../components/MovieCard/Bitmap.png"
-
 export default {
     title: "Layouts/Header/MovieDetails",
     component : MovieDetails,
@@ -20,7 +18,7 @@ const Template : ComponentStory<typeof MovieDetails> = (params) =>  <MovieDetail
 export const Default = Template.bind({});
 Default.args = {
    movie : {
-    imagePath: Image,
+    imagePath: "path ",
     title: 'Example Movie',
     releaseDate: new Date(2022, 10, 12),    
     genres: ['Action', 'Drama'],

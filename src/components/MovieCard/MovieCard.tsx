@@ -3,6 +3,7 @@ import "./MovieCard.scss"
 import { FC, useMemo, useState } from "react";
 import { PopupMenu } from "../PopupMenu/PopupMenu";
 import { CardModel } from "../../models/CardModel";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export interface MenuModel {
     onEditCLick: () => void;
@@ -10,15 +11,17 @@ export interface MenuModel {
 }
 
 export interface IMovieCard {
-    card : CardModel;
+    card: CardModel;
     id: string;
-    onCardClick: () => void;
     movieMenu: MenuModel;
 }
 
-export const MovieCard: FC<IMovieCard> = ({card, id, onCardClick, movieMenu}) => {
+export const MovieCard: FC<IMovieCard> = ({ card, id, movieMenu }) => {
     const [isMouseHoveredOnCard, setIsMouseHoveredOnCard] = useState<boolean>(false);
     const [isPopupMenuOpened, setIsPopupMenuOpened] = useState<boolean>(false);
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const link = useMemo(() => "?" + searchParams.toString(), [searchParams]);
     const menuItems = useMemo(() => [
         {
             onClick: movieMenu.onEditCLick,
@@ -44,7 +47,7 @@ export const MovieCard: FC<IMovieCard> = ({card, id, onCardClick, movieMenu}) =>
     }
 
     const handleCardClick = () => {
-        onCardClick();
+        navigate(`/${id}` + link);
     }
 
     const handleMenuClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -53,7 +56,7 @@ export const MovieCard: FC<IMovieCard> = ({card, id, onCardClick, movieMenu}) =>
     }
 
     return (
-        <div className="movie-card" id={id} data-testid="movie-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleCardClick}>
+        <div className="movie-card" id={id} data-testid="movie-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => handleCardClick()}>
             {isMouseHoveredOnCard &&
                 <span className="movie-card__context-menu icon-more-vertical" data-testid="card-menu-item" onClick={(event) => handleMenuClick(event)}></span>
             }
@@ -63,7 +66,7 @@ export const MovieCard: FC<IMovieCard> = ({card, id, onCardClick, movieMenu}) =>
                 </div>
             }
             <figure className="movie-card__image-container">
-            <img className="movie-card__image" src={card.imageUrl} alt={card.movieName + "_movie_poster"} />
+                <img className="movie-card__image" src={card.imageUrl} alt={card.movieName + "_movie_poster"} />
             </figure>
             <div className="movie-card__description-container">
                 <p className="movie-card__description movie-card__description--title">{card.movieName}</p>

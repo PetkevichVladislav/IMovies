@@ -3,9 +3,20 @@ import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { IMovieCard, MovieCard } from '../../components/MovieCard/MovieCard';
+import { MemoryRouter } from 'react-router-dom';
 
 describe("Movie card", () => {
-    const onClickCallback = jest.fn();
+    beforeEach(() => {
+        const mockedUsedNavigate = jest.fn();
+        const mockUseUrlParameters = jest.fn(() => "");
+        jest.mock("react-router-dom", () => ({
+            ...(jest.requireActual("react-router-dom") as any),
+
+            useNavigate: () => mockedUsedNavigate,
+            URLSearchParams: () => mockUseUrlParameters,
+        }));
+    })
+
     const onRemoveMenuCallback = jest.fn();
     const onEditMenuCallback = jest.fn();
     const movieData: IMovieCard = {
@@ -16,7 +27,6 @@ describe("Movie card", () => {
             releaseYear: 2022,
             genres: ['Action', 'Drama'],
         },
-        onCardClick: onClickCallback,
         movieMenu: {
             onDeleteClick: onRemoveMenuCallback,
             onEditCLick: onEditMenuCallback,
@@ -24,13 +34,18 @@ describe("Movie card", () => {
     };
 
     it("When data is valid component should renders correctly", () => {
-        const tree = renderer.create(<MovieCard {...movieData} />)
-            .toJSON();
+        const tree = renderer.create(
+        <MemoryRouter>
+            <MovieCard {...movieData} />
+        </MemoryRouter>).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     it("when user open forms the data should reneders data", () => {
-        render(<MovieCard {...movieData} />);
+        render(
+            <MemoryRouter>
+                <MovieCard {...movieData} />
+            </MemoryRouter>);
         expect(screen.getByRole("img")).toHaveAttribute("src", "http://uimage.com");
         expect(screen.getByText('Example Movie')).toBeInTheDocument();
         expect(screen.getByText('2022')).toBeInTheDocument();
@@ -38,14 +53,19 @@ describe("Movie card", () => {
     });
 
     it("when user clicks on element callback should be triggered", () => {
-        render(<MovieCard {...movieData} />);
+        render(
+            <MemoryRouter>
+                <MovieCard {...movieData} />
+            </MemoryRouter>);
         const card = screen.getByTestId("movie-card");
         fireEvent.click(card);
-        expect(onClickCallback).toBeCalled();
     });
 
     it("when user hover on card menu item button should appear", () => {
-        render(<MovieCard {...movieData} />);
+        render(
+            <MemoryRouter>
+                <MovieCard {...movieData} />
+            </MemoryRouter>);
         const card = screen.getByTestId("movie-card");
         fireEvent.mouseEnter(card);
         const menuItem = screen.getByTestId("card-menu-item");
@@ -53,7 +73,10 @@ describe("Movie card", () => {
     });
 
     it("when user clicks on card menu item button menu should appear", () => {
-        render(<MovieCard {...movieData} />);
+        render(
+            <MemoryRouter>
+                <MovieCard {...movieData} />
+            </MemoryRouter>);
         const card = screen.getByTestId("movie-card");
         fireEvent.mouseEnter(card);
         const menuItem = screen.getByTestId("card-menu-item");

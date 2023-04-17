@@ -8,9 +8,9 @@ export interface MovieContextModel{
     moviesQuantity: number,
     movieList: MovieModel[],
     searchQuery: string,
-    setSearchQuery: React.Dispatch<React.SetStateAction<string>>,
+    setSearchQuery: (query: string) => void,
     sortCriterion: SortOption,
-    setSortCriterion: React.Dispatch<React.SetStateAction<SortOption>>,
-    selectedMovieId: string | null | undefined,
-    setSelectedMovieId: React.Dispatch<React.SetStateAction<string | null | undefined>>,
+    setSortCriterion: (sortCriterion : SortOption) => void,
+    selectedMovieId?: string | null | undefined,
+    setSelectedMovieId?: React.Dispatch<React.SetStateAction<string | null | undefined>>,
 }
