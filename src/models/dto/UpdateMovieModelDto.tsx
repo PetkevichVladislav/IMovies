@@ -1,4 +1,4 @@
-export default interface MovieModelDto {
+export default interface UpdateMovieModelDto {
     title: string;
     tagline: string;
     vote_average: number;
@@ -7,6 +7,8 @@ export default interface MovieModelDto {
     poster_path: string;
     overview: string;
     runtime: number;
+    budget: number,
+    revenue: number,
     genres: string[];
-    id: string;
+    id: string;     
 }

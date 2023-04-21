@@ -1,19 +1,17 @@
 import MainPart from '../Main/Main';
-import Header from "../Header/Header";
 import Footer from '../Footer/Footer';
 
 import { Genre } from "../../models/enum/MenuGenre";
 import { MovieModel } from "../../models/MovieModel";
 import { SortOrder } from "../../models/enum/SortOrder";
 import { SortOption } from "../../models/enum/SortOption";
-import { GetMovie, GetMovies } from "../../services/MovieRequestService";
+import { getMovies } from "../../services/MovieRequestService";
 import { SearchOptions } from "../../models/enum/SearchOptions";
 import { MovieContextModel } from "../../models/context/MovieContextModel";
 import { GetMoviesRequestModel } from "../../models/request/GetMoviesRequestModel";
 import { mapSortOptionToRequestSortOption } from "../../services/SortOptionMapService";
-import { FC, createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { MovieDetails } from '../MovieDetails/MovieDetails';
-import { BrowserRouter, Outlet, Route, Routes, useLocation, useParams, useSearchParams } from "react-router-dom";
+import { FC, createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { Outlet, useSearchParams } from "react-router-dom";
 
 
 export const MovieContext = createContext<MovieContextModel | null>(null);
@@ -68,7 +66,7 @@ export const MovieListPage: FC = () => {
             sortOrder: SortOrder.Descending,
         };
 
-        GetMovies(movieRequestParameters).then(movieModels => {
+        getMovies(movieRequestParameters).then(movieModels => {
             setMovieList(movieModels);
             setMovieQuantity(movieModels.length)
         });
@@ -92,7 +90,7 @@ export const MovieListPage: FC = () => {
             searchBy: SearchOptions.Genres,
         };
 
-        if (query || query !== "" || genre === Genre.All) {
+        if (query || genre === Genre.All) {
             requestModel.search = query;
             requestModel.searchBy = SearchOptions.Title;
         }
@@ -102,7 +100,7 @@ export const MovieListPage: FC = () => {
             signal: filteringAndSortingAbortController.current!.signal,
         }
 
-        GetMovies(requestModel, requestParameters).then().then(movieModels => {
+        getMovies(requestModel, requestParameters).then().then(movieModels => {
             setMovieList(movieModels);
             setMovieQuantity(movieModels.length)
         })

@@ -1,4 +1,4 @@
-describe('Url query', () => {
+describe('Search parameters', () => {
     it("Url with home page", () => {
         cy.visit("/");
         cy.get("input").should("have.class", "search__input").should("be.empty");

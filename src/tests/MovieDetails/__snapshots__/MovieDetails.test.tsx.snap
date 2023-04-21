@@ -54,9 +54,6 @@ exports[`Movie details When data is valid component should renders correctly 1`]
         <p
           className="movie-details__details-information--title"
         />
-        <p
-          className="movie-details__details-information--score"
-        />
       </div>
       <p
         className="movie-details__details-information--genre"
@@ -64,11 +61,6 @@ exports[`Movie details When data is valid component should renders correctly 1`]
       <p
         className="movie-details__details-information--release-date"
       />
-      <p
-        className="movie-details__details-information--duration"
-      >
-         minutes
-      </p>
       <p
         className="movie-details__details-information--description"
       />

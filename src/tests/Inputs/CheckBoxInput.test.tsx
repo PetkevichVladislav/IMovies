@@ -5,10 +5,11 @@ import '@testing-library/jest-dom';
 import { CheckBoxInput, ICheckBoxInput } from '../../components/Inputs/CheckBoxInput/CheckBoxInput';
 
 describe("Date time Input", () => {
-    const onChangeCallback = jest.fn();
+    let isChecked = true;
+    const onChangeCallback = jest.fn(() => isChecked = false);
     const textInputData : ICheckBoxInput = {
         label: "check if you junior",
-        name: "checker",
+        isChecked: isChecked,
         onChange: onChangeCallback,
     };
 

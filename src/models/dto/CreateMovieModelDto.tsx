@@ -1,4 +1,4 @@
-export default interface MovieModelDto {
+export default interface CreateMovieModelDto {
     title: string;
     tagline: string;
     vote_average: number;
@@ -7,6 +7,7 @@ export default interface MovieModelDto {
     poster_path: string;
     overview: string;
     runtime: number;
-    genres: string[];
-    id: string;
+    budget: number,
+    revenue: number,
+    genres: string[];  
 }

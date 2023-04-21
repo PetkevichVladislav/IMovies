@@ -12,6 +12,7 @@ export interface IMovieDetails {
 export const MovieDetails: FC<IMovieDetails> = ({ movie: details }) => {
     const [searchParams] = useSearchParams();
     const link = useMemo(() => "/?" + searchParams.toString(), [searchParams]);
+    
     return (
         <div className="movie-details">
             <div className="movie-details__icons-container">
@@ -29,11 +30,11 @@ export const MovieDetails: FC<IMovieDetails> = ({ movie: details }) => {
                 <div className="movie-details__details-container">
                     <div className="movie-details__heading-container">
                         <p className="movie-details__details-information--title">{details?.title}</p>
-                        <p className="movie-details__details-information--score">{details?.rating}</p>
+                        {details?.rating && <p className="movie-details__details-information--score">{details?.rating}</p>}
                     </div>
                     <p className="movie-details__details-information--genre">{details?.genres.join(", ")}</p>
                     <p className="movie-details__details-information--release-date">{details?.releaseDate.getFullYear()}</p>
-                    <p className="movie-details__details-information--duration">{details?.runtime} minutes</p>
+                    {details?.runtime && <p className="movie-details__details-information--duration">{details?.runtime} minutes</p>}
                     <p className="movie-details__details-information--description">{details?.overview}</p>
                 </div>
             </div>

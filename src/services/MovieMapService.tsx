@@ -1,7 +1,7 @@
 
 import { CardModel } from "../models/CardModel"
 import { MovieModel } from "../models/MovieModel"
-import { MovieModelDto } from "../models/dto/MovieModelDto"
+import MovieModelDto from "../models/dto/MovieModelDto"
 
 export const mapMovieDtoToMovieModel = (movieDto : MovieModelDto) : MovieModel => {
     return {

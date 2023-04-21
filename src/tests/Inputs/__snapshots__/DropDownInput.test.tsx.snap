@@ -2,22 +2,26 @@
 
 exports[`Drop Down Input When data is valid component should renders correctly 1`] = `
 <div
-  className="drop-down-input__select-container"
-  data-testid="drop-down-container"
-  onClick={[Function]}
+  className="drop-down-input"
 >
-  <select
-    className="input drop-down-input__select"
-  >
-    <option>
-      Select value
-    </option>
-  </select>
-  <span
-    className="drop-down-input__appearance icon-arrow-down "
-  />
   <div
-    className="drop-down-input__content-container"
-  />
+    className="drop-down-input__select-container"
+    data-testid="drop-down-container"
+    onClick={[Function]}
+  >
+    <select
+      className="input drop-down-input__select"
+    >
+      <option>
+        Select value
+      </option>
+    </select>
+    <span
+      className="drop-down-input__appearance icon-arrow-down "
+    />
+    <div
+      className="drop-down-input__content-container"
+    />
+  </div>
 </div>
 `;

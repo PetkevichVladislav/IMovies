@@ -4,23 +4,29 @@ import { useCallback, useMemo, useState } from "react";
 
 import Counter from "../Counter/Counter"
 import { IMovieCard, MovieCard } from "../MovieCard/MovieCard";
-
-import Image from "../MovieCard/Bitmap.png";
-import { CreateMovieModal } from "../Modals/CreateMovieModal/CreateMovieModal";
-import { ConfirmationModal } from "../Modals/ConfirmationModal/ConfirmationModal";
 import { InformationModal } from "../Modals/InformationModal/InformationModal";
 import { useMovieContext } from "../MovieListPage/MovieListPage";
 import { mapMovieModelToCardModel } from "../../services/MovieMapService";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const MovieGrid = () => {
     const movieContextModel = useMovieContext();
-    const [isEditMovieModelOpened, setIsEditMovieModelOpened] = useState<boolean>(false);
-    const [isDeleteMovieConfirmationModelOpened, setIsDeleteMovieConfirmationModelOpened] = useState<boolean>(false);
     const [isEditMovieInformationModelOpened, setIsEditMovieInformationModelOpened] = useState<boolean>(false);
 
     const setMovieQuantity = useCallback(() => {
         return movieContextModel ? movieContextModel?.moviesQuantity : 0  
     }, [movieContextModel])
+
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const onEditClick = useCallback((movieId: string) => {
+        navigate(`/${movieId}/edit?` + searchParams.toString());
+    }, [navigate, searchParams]);
+
+    const onRemoveClick = useCallback((movieId: string) => {
+        navigate(`/${movieId}/remove?` + searchParams.toString());
+    }, [navigate, searchParams]);
+
 
     const cards = useMemo( () => movieContextModel?.movieList.map(movie => {
         const card = mapMovieModelToCardModel(movie);
@@ -28,17 +34,13 @@ const MovieGrid = () => {
             id: movie.id,
             card: card,
             movieMenu: {
-                onDeleteClick: () => {
-                    setIsDeleteMovieConfirmationModelOpened(true);
-                },
-                onEditCLick: () => {
-                    setIsEditMovieModelOpened(true);
-                }
+                onDeleteClick: () => onRemoveClick(movie.id),
+                onEditCLick: () => onEditClick(movie.id),
             }
         };
-        return <MovieCard {...movieData} />
+        return <MovieCard key={movie.id + card.movieName.toLowerCase().replace(" ", "-")} {...movieData} />
     }
-    ), [movieContextModel]);
+    ), [movieContextModel, onEditClick, onRemoveClick]);
 
     return (
         <>
@@ -48,22 +50,10 @@ const MovieGrid = () => {
                     {cards}
                 </div>
             </section>
-            <CreateMovieModal isOpened={isEditMovieModelOpened}
-                onClose={() => setIsEditMovieModelOpened(false)}
-                onSubmit={() => {
-                    setIsEditMovieModelOpened(false);
-                    setIsEditMovieInformationModelOpened(true);
-                }}
-                title="edit movie" />
             <InformationModal isOpened={isEditMovieInformationModelOpened}
                 onClose={() => setIsEditMovieInformationModelOpened(false)}
                 title="congratulations !"
                 children="The movie has been updated successfully" />
-            <ConfirmationModal isOpened={isDeleteMovieConfirmationModelOpened}
-                onClose={() => setIsDeleteMovieConfirmationModelOpened(false)}
-                onConfirm={() => setIsDeleteMovieConfirmationModelOpened(false)}
-                title="Delete movie"
-                children="Are you sure you want to delete this movie?" />
         </>
     )
 }

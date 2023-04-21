@@ -1,4 +1,8 @@
 .drop-down-input{
+    position: relative;
+}
+
+.drop-down-input{
     &__select-container{
         position: relative;
     }
@@ -37,7 +41,10 @@
     }
 
     &__content {
+        z-index: 15;
+        position: absolute;
         display: block;
+        width: calc(100% - 32px);
         outline: #F65261 2px solid;
         background-color: #232323;
         border: none;

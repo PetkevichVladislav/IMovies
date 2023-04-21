@@ -1,4 +1,4 @@
-import { MovieModelDto } from "../dto/MovieModelDto";
+import MovieModelDto from "../dto/MovieModelDto";
 
 export interface GetMoviesResponse{
     data: Array<MovieModelDto>;

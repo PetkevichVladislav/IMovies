@@ -6,7 +6,7 @@ import { DateTimeInput, IDateTimeInput } from '../../components/Inputs/DateTimeI
 
 describe("Date time Input", () => {
     const DateTimeInputData : IDateTimeInput = {
-        initialValue: "15-03-2021",
+        value: "15-03-2021",
         name: "date",
     };
 
@@ -20,6 +20,6 @@ describe("Date time Input", () => {
         render(<DateTimeInput {...DateTimeInputData}/>);
         const input = screen.getByTestId("date-time-input");
         expect(input).toHaveAttribute("name",DateTimeInputData.name);
-        expect(input).toHaveAttribute("value",DateTimeInputData.initialValue);
+        expect(input).toHaveAttribute("value",DateTimeInputData.value);
     });
 });
