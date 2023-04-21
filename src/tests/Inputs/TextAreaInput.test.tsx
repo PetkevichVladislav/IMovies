@@ -7,7 +7,7 @@ import { ITextAreaInput, TextAreaInput } from '../../components/Inputs/TextAreaI
 describe("Text Area Input", () => {
     const textAreaInputData : ITextAreaInput = {
         placeholder: "input your data",
-        initialValue: "text",
+        value: "text",
         name: "data",
         
     };

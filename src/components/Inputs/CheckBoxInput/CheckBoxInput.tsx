@@ -1,29 +1,25 @@
-import { FC, useCallback, useState } from "react";
+import { FC } from "react";
 
 import "./CheckBoxInput.scss";
 import "../Input.scss";
 
 export interface ICheckBoxInput {
     label: string;
-    defaultChecked?: boolean;
-    name?: string;
-    onChange: (isChecked: boolean) => void;
+    isChecked?: boolean;
+    onChange: (event : React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const CheckBoxInput: FC<ICheckBoxInput> = ({defaultChecked = false, label, onChange, name}) => {
-    const [isChecked, setIsChecked] = useState<boolean>(defaultChecked);
-
-    const onChanged = useCallback(() => {
-        setIsChecked(!isChecked);
-        onChange(!isChecked);
-    }, [onChange, isChecked, setIsChecked]);
-
+export const CheckBoxInput: FC<ICheckBoxInput> = ({ isChecked = false, label, onChange }) => {
     return (
-        <>
-            <label className="checkbox-input__container" defaultChecked={isChecked} onChange={onChanged} data-testid="checkbox-container">{label}
-                <input className="checkbox-input__input" name={name} type="checkbox" checked={isChecked} data-testid="checkbox-input"/>
-                <span className="checkbox-input__checkmark"></span>
-            </label>
-        </>
+        <label className="checkbox-input__container" data-testid="checkbox-container">{label}
+            <input className="checkbox-input__input"
+                key={label.replace(" ", "-").toLowerCase()}
+                value={label}
+                type="checkbox"
+                checked={isChecked}
+                onChange={event => onChange(event)}
+                data-testid="checkbox-input" />
+            <span className="checkbox-input__checkmark"></span>
+        </label>
     )
 }

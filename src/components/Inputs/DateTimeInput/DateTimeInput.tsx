@@ -4,20 +4,20 @@ import "../Input.scss";
 import "./DateTimeInput.scss";
 
 export interface IDateTimeInput {
-    initialValue?: string;
+    value?: string;
     name?: string;
+    onChange?: (value: string) => void;
 }
 
-export const DateTimeInput: FC<IDateTimeInput> = ({ initialValue, name }) => {
-    const [date, setDate] = useState<string|undefined>(initialValue);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setDate(e.target.value);
-    };
-
+export const DateTimeInput: FC<IDateTimeInput> = ({ value, name, onChange }) => {
     return (
         <>
-            <input className="input date-time-input" type="date" name={name} onChange={handleChange} value={date} data-testid="date-time-input"/>
+            <input className="input date-time-input" 
+            type="date" 
+            name={name} 
+            value={value} 
+            data-testid="date-time-input"
+            onChange={event => onChange && onChange(event.target.value)}/>
         </>
     )
 }

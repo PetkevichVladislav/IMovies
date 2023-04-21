@@ -13,7 +13,7 @@ export interface ModalBaseStyling {
 export interface IModelBase {
     title?: string;
     isOpened: boolean;
-    onClose: () => void;
+    onClose?: () => void;
     children?: ReactNode;
     style?: ModalBaseStyling;
 }

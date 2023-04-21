@@ -2,20 +2,25 @@ import "./Header.scss"
 import Logo from "../Logo/Logo";
 import Search from "../Search/Search";
 
-import { useCallback, useState } from 'react';
-import { CreateMovieModal } from "../Modals/CreateMovieModal/CreateMovieModal";
+import { useState } from 'react';
 import { InformationModal } from "../Modals/InformationModal/InformationModal";
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 
 function Header() {
-    const [isCreateMovieModelOpened, setIsCreateMovieModelOpened] = useState<boolean>(false);
     const [isEditMovieModelOpened, setIsEditMovieModelOpened] = useState<boolean>(false);
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const onOpenCreateModal = () => {
+        console.log(`/new?` + searchParams.toString());
+        navigate(`/new?` + searchParams.toString());
+    };
 
     return (
         <>
             <header className="banner">
                 <div className="add-movie">
                     <Logo />
-                    <button className="add-movie__button" onClick={() => setIsCreateMovieModelOpened(true)}>+ADD MOVIE</button>
+                    <button className="add-movie__button" onClick={onOpenCreateModal}>+ADD MOVIE</button>
                 </div>
                 <div className="search-container">
                     <h1 className="search-container__heading">
@@ -24,14 +29,7 @@ function Header() {
                     <Search/>
                 </div>
             </header>
-            <CreateMovieModal isOpened={isCreateMovieModelOpened}
-                onClose={() => setIsCreateMovieModelOpened(false)}
-                onSubmit={() => {
-                    setIsCreateMovieModelOpened(false);
-                    setIsEditMovieModelOpened(true);
-                }}
-                title="add movie"
-                movie={null} />
+            <Outlet />
             <InformationModal isOpened={isEditMovieModelOpened}
                 onClose={() => setIsEditMovieModelOpened(false)}
                 title="congratulations !"

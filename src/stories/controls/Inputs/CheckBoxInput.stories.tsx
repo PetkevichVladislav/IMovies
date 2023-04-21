@@ -18,5 +18,5 @@ const Template : ComponentStory<typeof CheckBoxInput> = (params) =>  <CheckBoxIn
 export const Default = Template.bind({});
 Default.args = {
     label: "Checkbox",
-    onChange: (isChecked: boolean) => {console.log(isChecked)},
+    onChange: (event) => {console.log(event.target.checked)},
 };

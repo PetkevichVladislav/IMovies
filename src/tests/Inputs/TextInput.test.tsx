@@ -7,7 +7,7 @@ import { ITextInput, TextInput } from "../../components/Inputs/TextInput/TextInp
 describe("Text Input", () => {
     const textInputData : ITextInput = {
         placeholder: "input your data",
-        initialValue: "15",
+        value: "15",
         name: "data",
     };
 
@@ -21,7 +21,7 @@ describe("Text Input", () => {
         render(<TextInput {...textInputData}/>);
         const input = screen.getByTestId("text-input");
         expect(input).toHaveAttribute("name",textInputData.name);
-        expect(input).toHaveAttribute("value",textInputData.initialValue);
+        expect(input).toHaveAttribute("value",textInputData.value);
         expect(input).toHaveAttribute("placeholder",textInputData.placeholder);
     });
 });

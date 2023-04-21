@@ -17,8 +17,8 @@ export default {
 const Template: ComponentStory<typeof DropDownInput> = (params) => <DropDownInput {...params} />;
 
 const checkboxes = <>
-    <CheckBoxInput label='first' onChange={(state: boolean) => console.log("1:" + state)} />,
-    <CheckBoxInput label='second' onChange={(state: boolean) => console.log("2:" + state)} />
+    <CheckBoxInput label='first' onChange={(event: React.ChangeEvent<HTMLInputElement>) => console.log("1:" + event.target.checked)} />,
+    <CheckBoxInput label='second' onChange={(event: React.ChangeEvent<HTMLInputElement>) => console.log("2:" + event.target.checked)} />
 </>;
 
 export const Default = Template.bind({});
