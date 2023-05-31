@@ -11,7 +11,7 @@ export interface IMovieDetails {
 
 export const MovieDetails: FC<IMovieDetails> = ({ movie: details }) => {
     const [searchParams] = useSearchParams();
-    const link = useMemo(() => "/?" + searchParams.toString(), [searchParams]);
+    const link = useMemo(() => "/movies/?" + searchParams.toString(), [searchParams]);
     
     return (
         <div className="movie-details">

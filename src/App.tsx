@@ -13,21 +13,21 @@ export const App = () => {
   return (
     <div className="app">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MovieListPage />}>
-            <Route path=":id" element={<MovieDetailsLoader />} />
-            <Route path="" element={<Header />}>
-              <Route path="/new" element={<CreateMovieModal
-                isOpened
-                title="add movie"
-                movie={null} />}
-              />
-              <Route path="/:id/edit" element={<EditMovieModalLoader />} />
-              <Route path="/:id/remove" element={<RemoveMovieModal/>} />
+          <Routes>
+            <Route path="/movies" element={<MovieListPage />}>
+              <Route path="/movies/:id" element={<MovieDetailsLoader />} />
+              <Route path="/movies" element={<Header />}>
+                <Route path="movies/new" element={<CreateMovieModal
+                  isOpened
+                  title="add movie"
+                  movie={null} />}
+                />
+                <Route path="movies/:id/edit" element={<EditMovieModalLoader />} />
+                <Route path="movies/:id/remove" element={<RemoveMovieModal/>} />
+              </Route>
             </Route>
-          </Route>
-          <Route path="*" element={<div>error</div>} />
-        </Routes>
+            <Route path="*" element={<div>error</div>} />
+          </Routes>
       </BrowserRouter>
     </div>
   );

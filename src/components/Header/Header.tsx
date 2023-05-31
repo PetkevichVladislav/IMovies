@@ -11,8 +11,7 @@ function Header() {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const onOpenCreateModal = () => {
-        console.log(`/new?` + searchParams.toString());
-        navigate(`/new?` + searchParams.toString());
+        navigate(`movies/new?` + searchParams.toString());
     };
 
     return (

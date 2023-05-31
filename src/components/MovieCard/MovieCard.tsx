@@ -47,7 +47,7 @@ export const MovieCard: FC<IMovieCard> = ({ card, id, movieMenu }) => {
     }
 
     const handleCardClick = () => {
-        navigate(`/${id}` + link);
+        navigate(`/movies/${id}` + link);
     }
 
     const handleMenuClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
