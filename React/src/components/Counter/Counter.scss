@@ -1,0 +1,19 @@
+.counter{
+    margin: 0px;
+
+    &__text{
+        color: #FFFFFF;
+        font-size: 20px;
+    }
+    
+    &__count{
+        display: inline;
+        font-weight: 700;
+    }
+
+    &__message{
+        display: inline;
+        font-weight: 500;
+        margin-left: 4px;
+    }
+}
